@@ -1,0 +1,65 @@
+[project]
+name = "postulo-helloworld"
+version = "0.1.0"
+description = "The smallest Postulo plugin there is: a capture source and a notifier, translated and tested. Copy it."
+readme = "README.md"
+requires-python = ">=3.12"
+license = "MIT"
+authors = [{ name = "Tiago Agueda" }]
+keywords = ["postulo", "plugin", "example"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Framework :: Django",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+# Nothing to depend on: a plugin runs inside Postulo's own environment and uses what is
+# already there. Declaring Postulo here would make pip try to fetch it from PyPI, where
+# it is not published.
+dependencies = []
+
+[project.urls]
+Homepage = "https://source.tiagoagueda.com/tiagoagueda/postulo-helloworld"
+"Postulo" = "https://source.tiagoagueda.com/tiagoagueda/postulo"
+"Writing a plugin" = "https://source.tiagoagueda.com/tiagoagueda/postulo/src/branch/main/docs/PLUGINS.md"
+
+# This is the whole installation: an entry point per plugin. Postulo reads these groups
+# when it starts and the plugins appear, with no change to Postulo.
+[project.entry-points."postulo.sources"]
+helloworld = "postulo_helloworld.source:HelloWorldSource"
+
+[project.entry-points."postulo.notifiers"]
+helloworld = "postulo_helloworld.notifier:HelloWorldNotifier"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/postulo_helloworld"]
+
+[dependency-groups]
+# Postulo itself, for the tests: they run the plugin inside a real Postulo, through its
+# registry, exactly as an instance would.
+dev = [
+    "postulo @ git+https://source.tiagoagueda.com/tiagoagueda/postulo.git",
+    "pytest>=8.3",
+    "pytest-django>=4.14",
+    "ruff>=0.16",
+]
+
+[tool.pytest.ini_options]
+# Postulo's settings, minus the test app that only exists in Postulo's own repository.
+DJANGO_SETTINGS_MODULE = "tests.settings"
+pythonpath = ["."]
+testpaths = ["tests"]
+filterwarnings = ["error"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "S"]
+ignore = ["S101"]

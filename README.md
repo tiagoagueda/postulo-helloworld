@@ -1,6 +1,6 @@
 # postulo-helloworld
 
-**The smallest [Postulo](https://source.tiagoagueda.com/tiagoagueda/postulo) plugin there
+**The smallest [Postulo](https://source.tiagoagueda.com/postulo/postulo) plugin there
 is. Copy it to start your own.**
 
 Postulo puts an interface wherever a choice could reasonably vary — where a posting is
@@ -26,7 +26,7 @@ its own, tests that run it inside a real Postulo, and a CI workflow.
 Into the environment of a running Postulo:
 
 ```sh
-uv pip install git+https://source.tiagoagueda.com/tiagoagueda/postulo-helloworld.git
+uv pip install git+https://source.tiagoagueda.com/postulo/postulo-helloworld.git
 ```
 
 Restart Postulo. **Capture a posting** from any address on `hello.example` and the source
@@ -58,7 +58,7 @@ uninstalling the package removes both.
 The contract in full — every field of `JobPostingData`, how sources are chosen, what a
 connected plugin's `config_fields()` and `test()` must do, how to add a settings section —
 is in Postulo's
-[docs/PLUGINS.md](https://source.tiagoagueda.com/tiagoagueda/postulo/src/branch/main/docs/PLUGINS.md).
+[docs/PLUGINS.md](https://source.tiagoagueda.com/postulo/postulo/src/branch/main/docs/PLUGINS.md).
 
 ## Rules worth keeping
 

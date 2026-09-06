@@ -20,9 +20,9 @@ classifiers = [
 dependencies = []
 
 [project.urls]
-Homepage = "https://source.tiagoagueda.com/tiagoagueda/postulo-helloworld"
-"Postulo" = "https://source.tiagoagueda.com/tiagoagueda/postulo"
-"Writing a plugin" = "https://source.tiagoagueda.com/tiagoagueda/postulo/src/branch/main/docs/PLUGINS.md"
+Homepage = "https://source.tiagoagueda.com/postulo/postulo-helloworld"
+"Postulo" = "https://source.tiagoagueda.com/postulo/postulo"
+"Writing a plugin" = "https://source.tiagoagueda.com/postulo/postulo/src/branch/main/docs/PLUGINS.md"
 
 # This is the whole installation: an entry point per plugin. Postulo reads these groups
 # when it starts and the plugins appear, with no change to Postulo.
@@ -43,7 +43,7 @@ packages = ["src/postulo_helloworld"]
 # Postulo itself, for the tests: they run the plugin inside a real Postulo, through its
 # registry, exactly as an instance would.
 dev = [
-    "postulo @ git+https://source.tiagoagueda.com/tiagoagueda/postulo.git",
+    "postulo @ git+https://source.tiagoagueda.com/postulo/postulo.git",
     "pytest>=8.3",
     "pytest-django>=4.14",
     "ruff>=0.16",

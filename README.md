@@ -17,7 +17,6 @@ its own, tests that run it inside a real Postulo, and a CI workflow.
 | `src/postulo_helloworld/source.py` | A **capture source**: four names (`name`, `version`, `can_handle`, `parse`), no base class. Reads a posting out of a tiny page format and returns `JobPostingData`. |
 | `src/postulo_helloworld/notifier.py` | A **notifier**, one of the connected plugins: declares the fields it needs, Postulo draws the form, and `send()` appends each notification to a file. |
 | `src/postulo_helloworld/locale/` | **This plugin's own translations**, French and Portuguese. Postulo never translates a plugin's strings; every plugin holds its locale. |
-| `scripts/compile_messages.py` | Turns the `.po` catalogues into the `.mo` files Django reads, in pure Python, so no gettext installation is needed. |
 | `tests/` | Runs both plugins through Postulo's registry, exactly as an instance would, and checks the French comes from this package. `tests/settings.py` is Postulo's test configuration, borrowed. |
 | `pyproject.toml` | The entry points that make the plugins appear, and nothing else: a plugin has no dependencies of its own, it runs inside Postulo's environment. |
 
@@ -43,11 +42,14 @@ uninstalling the package removes both.
 4. Wrap every string a person reads in `gettext` / `gettext_lazy`, then:
 
    ```sh
-   django-admin makemessages --locale fr_FR --locale pt_PT   # writes locale/*/django.po
-   python scripts/compile_messages.py                         # writes the .mo files
+   uv run postulo-messages extract   # a catalogue for every language Postulo offers
+   uv run postulo-messages compile   # writes the .mo files, no gettext needed
    ```
 
-   Commit the `.mo` files: they ship with the package.
+   Postulo's own catalogue tool, installed with Postulo as a dev dependency. Commit the
+   `.mo` files: they ship with the package. English is the source; French and European
+   Portuguese are filled while working, and `uv run pytest -m release` holds the
+   twenty-four European Union catalogues complete before a release.
 5. Run the tests:
 
    ```sh

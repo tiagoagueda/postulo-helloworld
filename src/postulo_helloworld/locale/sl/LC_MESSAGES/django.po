@@ -1,0 +1,50 @@
+# slovenščina translation of postulo-helloworld.
+# This file is distributed under the same license as Postulo (AGPL-3.0-or-later).
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Postulo\n"
+"Report-Msgid-Bugs-To: https://source.tiagoagueda.com/postulo/postulo/issues\n"
+"POT-Creation-Date: 2026-09-13 04:00+0000\n"
+"PO-Revision-Date: 2026-09-13 04:00+0000\n"
+"Last-Translator: Postulo contributors\n"
+"Language-Team: slovenščina\n"
+"Language: sl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
+"X-Generator: postulo scripts/messages.py\n"
+
+#: src/postulo_helloworld/notifier.py:65
+msgid "A line was written. Hello, world!"
+msgstr ""
+
+#: src/postulo_helloworld/notifier.py:63
+#, python-format
+msgid "Could not write to the file: %(error)s"
+msgstr ""
+
+#: src/postulo_helloworld/notifier.py:45
+msgid "Each notification is appended as one line. The file is created."
+msgstr ""
+
+#: src/postulo_helloworld/notifier.py:43
+msgid "File to write to"
+msgstr ""
+
+#: src/postulo_helloworld/notifier.py:49
+msgid "Greeting"
+msgstr ""
+
+#: src/postulo_helloworld/notifier.py:36
+msgid "Hello world"
+msgstr ""
+
+#: src/postulo_helloworld/notifier.py:53
+msgid "Starts every line, so you can tell this plugin's lines apart."
+msgstr ""
+
+#: src/postulo_helloworld/notifier.py:60
+msgid "This is a test from Postulo."
+msgstr ""

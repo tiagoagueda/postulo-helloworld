@@ -17,34 +17,41 @@ msgstr ""
 "X-Generator: postulo scripts/messages.py\n"
 
 #: src/postulo_helloworld/notifier.py:65
+#, draft
 msgid "A line was written. Hello, world!"
-msgstr ""
+msgstr "Записан е ред. Здравей, свят!"
 
 #: src/postulo_helloworld/notifier.py:63
-#, python-format
+#, python-format, draft
 msgid "Could not write to the file: %(error)s"
-msgstr ""
+msgstr "Файлът не можа да бъде записан: %(error)s"
 
 #: src/postulo_helloworld/notifier.py:45
+#, draft
 msgid "Each notification is appended as one line. The file is created."
-msgstr ""
+msgstr "Всяко известие се добавя като един ред. Файлът се създава."
 
 #: src/postulo_helloworld/notifier.py:43
+#, draft
 msgid "File to write to"
-msgstr ""
+msgstr "Файл за запис"
 
 #: src/postulo_helloworld/notifier.py:49
+#, draft
 msgid "Greeting"
-msgstr ""
+msgstr "Поздрав"
 
 #: src/postulo_helloworld/notifier.py:36
+#, draft
 msgid "Hello world"
-msgstr ""
+msgstr "Здравей, свят"
 
 #: src/postulo_helloworld/notifier.py:53
+#, draft
 msgid "Starts every line, so you can tell this plugin's lines apart."
-msgstr ""
+msgstr "Започва всеки ред, за да различавате редовете на тази добавка."
 
 #: src/postulo_helloworld/notifier.py:60
+#, draft
 msgid "This is a test from Postulo."
-msgstr ""
+msgstr "Това е тест от Postulo."

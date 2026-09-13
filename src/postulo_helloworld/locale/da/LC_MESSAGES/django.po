@@ -17,34 +17,41 @@ msgstr ""
 "X-Generator: postulo scripts/messages.py\n"
 
 #: src/postulo_helloworld/notifier.py:65
+#, draft
 msgid "A line was written. Hello, world!"
-msgstr ""
+msgstr "En linje blev skrevet. Hej, verden!"
 
 #: src/postulo_helloworld/notifier.py:63
-#, python-format
+#, python-format, draft
 msgid "Could not write to the file: %(error)s"
-msgstr ""
+msgstr "Kunne ikke skrive til filen: %(error)s"
 
 #: src/postulo_helloworld/notifier.py:45
+#, draft
 msgid "Each notification is appended as one line. The file is created."
-msgstr ""
+msgstr "Hver notifikation tilføjes som én linje. Filen oprettes."
 
 #: src/postulo_helloworld/notifier.py:43
+#, draft
 msgid "File to write to"
-msgstr ""
+msgstr "Fil at skrive til"
 
 #: src/postulo_helloworld/notifier.py:49
+#, draft
 msgid "Greeting"
-msgstr ""
+msgstr "Hilsen"
 
 #: src/postulo_helloworld/notifier.py:36
+#, draft
 msgid "Hello world"
-msgstr ""
+msgstr "Hej verden"
 
 #: src/postulo_helloworld/notifier.py:53
+#, draft
 msgid "Starts every line, so you can tell this plugin's lines apart."
-msgstr ""
+msgstr "Indleder hver linje, så du kan kende dette plugins linjer fra andres."
 
 #: src/postulo_helloworld/notifier.py:60
+#, draft
 msgid "This is a test from Postulo."
-msgstr ""
+msgstr "Dette er en test fra Postulo."

@@ -17,34 +17,42 @@ msgstr ""
 "X-Generator: postulo scripts/messages.py\n"
 
 #: src/postulo_helloworld/notifier.py:65
+#, draft
 msgid "A line was written. Hello, world!"
-msgstr ""
+msgstr "Egy sor kiírva. Helló, világ!"
 
 #: src/postulo_helloworld/notifier.py:63
-#, python-format
+#, python-format, draft
 msgid "Could not write to the file: %(error)s"
-msgstr ""
+msgstr "Nem sikerült a fájlba írni: %(error)s"
 
 #: src/postulo_helloworld/notifier.py:45
+#, draft
 msgid "Each notification is appended as one line. The file is created."
-msgstr ""
+msgstr "Minden értesítés egy sorként kerül a fájl végére. A fájl létrejön."
 
 #: src/postulo_helloworld/notifier.py:43
+#, draft
 msgid "File to write to"
-msgstr ""
+msgstr "Fájl, amelybe ír"
 
 #: src/postulo_helloworld/notifier.py:49
+#, draft
 msgid "Greeting"
-msgstr ""
+msgstr "Üdvözlés"
 
 #: src/postulo_helloworld/notifier.py:36
+#, draft
 msgid "Hello world"
-msgstr ""
+msgstr "Helló világ"
 
 #: src/postulo_helloworld/notifier.py:53
+#, draft
 msgid "Starts every line, so you can tell this plugin's lines apart."
 msgstr ""
+"Minden sor elején áll, így meg tudod különböztetni ennek a bővítménynek a sorait."
 
 #: src/postulo_helloworld/notifier.py:60
+#, draft
 msgid "This is a test from Postulo."
-msgstr ""
+msgstr "Ez egy teszt a Postulo alkalmazástól."

@@ -35,10 +35,12 @@ jobs:
         run: uv run ruff check .
 
       - name: Fail if the compiled catalogues are out of date
+        # Postulo's own catalogue tool, installed with Postulo as a dev dependency; no GNU
+        # gettext in the image.
         run: |
-          uv run python scripts/compile_messages.py
+          uv run postulo-messages compile
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
-          git diff --exit-code -- '*.mo' || (echo "::error::A django.mo is stale. Run scripts/compile_messages.py and commit." && exit 1)
+          git diff --exit-code -- '*.mo' || (echo "::error::A django.mo is stale. Run 'uv run postulo-messages compile' and commit." && exit 1)
 
       - name: Test
         run: uv run pytest

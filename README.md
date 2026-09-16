@@ -15,9 +15,9 @@ its own, tests that run it inside a real Postulo, and a CI workflow.
 | Path | What it is |
 | --- | --- |
 | `src/postulo_helloworld/source.py` | A **capture source**: four names (`name`, `version`, `can_handle`, `parse`), no base class. Reads a posting out of a tiny page format and returns `JobPostingData`. |
-| `src/postulo_helloworld/notifier.py` | A **notifier**, one of the connected plugins: declares the fields it needs, Postulo draws the form, and `send()` appends each notification to a file. |
+| `src/postulo_helloworld/notifier.py` | A **notifier**, one of the connected plugins: declares the fields it needs, Postulo draws the form, and `send()` appends each notification to a file. The person names the file; the operator names the directory, and `file_for()` explains at length why it is that way round. |
 | `src/postulo_helloworld/locale/` | **This plugin's own translations**, French and Portuguese. Postulo never translates a plugin's strings; every plugin holds its locale. |
-| `tests/` | Runs both plugins through Postulo's registry, exactly as an instance would, and checks the French comes from this package. `tests/settings.py` is Postulo's test configuration, borrowed. |
+| `tests/` | Runs both plugins through Postulo's registry, exactly as an instance would, and checks the French comes from this package. `tests/test_surface.py` fails on an import that reaches past `postulo.plugins.api` — copy it. `tests/settings.py` is Postulo's test configuration, borrowed. |
 | `pyproject.toml` | The entry points that make the plugins appear, and nothing else: a plugin has no dependencies of its own, it runs inside Postulo's environment. |
 
 ## Try it
@@ -30,8 +30,12 @@ uv pip install git+https://source.tiagoagueda.com/postulo/postulo-helloworld.git
 
 Restart Postulo. **Capture a posting** from any address on `hello.example` and the source
 answers; under **Settings → Connections → Add**, *Hello world* is offered, asks for a
-file path, and its *Test* button writes a line. That is the whole installation;
+file name, and its *Test* button writes a line. That is the whole installation;
 uninstalling the package removes both.
+
+The lines go to `data/helloworld/` beside Postulo's own data, or wherever
+`POSTULO_HELLOWORLD_DIR` points. Nothing a person types moves that: the field is a name,
+never a path.
 
 ## Make it yours
 
@@ -67,6 +71,16 @@ is in Postulo's
 - **Leave a field empty rather than guessing.** A blank box on the review screen invites
   typing; a confidently wrong value has to be noticed first.
 - **Return `None` when the page is not yours.** Postulo tries the next source.
+- **A person names a thing; the operator names the place.** A connection's settings are
+  ordinary user input handed to you with the server's privileges attached, so a field that
+  takes a path lets any account on the instance reach any file the process may write. Take
+  a name, refuse a separator rather than cleaning it out, and put the directory in the
+  environment.
+- **Match the host, not the address.** `"board.example" in url` also says yes to
+  `https://evil.test/?board.example`, and a source that says yes is parsing a stranger's
+  page ahead of Postulo's own parsers.
+- **Import `postulo.plugins.api` and nothing else from Postulo.** Everything else is
+  internals that may be renamed in a patch release; `tests/test_surface.py` holds you to it.
 - **Use `postulo.plugins.http.client()` for every request** a connected plugin makes. It
   carries Postulo's timeouts, user agent and destination policy.
 - **Raise on failure in `send()`.** Postulo logs it and shows it on the connection; it

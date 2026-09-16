@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Postulo\n"
 "Report-Msgid-Bugs-To: https://source.tiagoagueda.com/postulo/postulo/issues\n"
-"POT-Creation-Date: 2026-09-13 04:00+0000\n"
+"POT-Creation-Date: 2026-09-16 08:36+0000\n"
 "PO-Revision-Date: 2026-09-13 04:00+0000\n"
 "Last-Translator: Postulo contributors\n"
 "Language-Team: italiano\n"
@@ -16,42 +16,46 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: postulo scripts/messages.py\n"
 
-#: src/postulo_helloworld/notifier.py:65
+#: src/postulo_helloworld/notifier.py:155
 #, draft
 msgid "A line was written. Hello, world!"
 msgstr "Una riga è stata scritta. Ciao, mondo!"
 
-#: src/postulo_helloworld/notifier.py:63
+#: src/postulo_helloworld/notifier.py:121
+msgid ""
+"A name, not a path: the file is created in the directory this instance gives the plugin. Each notification is appended as one line."
+msgstr ""
+
+#: src/postulo_helloworld/notifier.py:153
 #, python-format, draft
 msgid "Could not write to the file: %(error)s"
 msgstr "Impossibile scrivere nel file: %(error)s"
 
-#: src/postulo_helloworld/notifier.py:45
-#, draft
-msgid "Each notification is appended as one line. The file is created."
-msgstr "Ogni notifica viene aggiunta come una riga. Il file viene creato."
+#: src/postulo_helloworld/notifier.py:118
+msgid "File name"
+msgstr ""
 
-#: src/postulo_helloworld/notifier.py:43
-#, draft
-msgid "File to write to"
-msgstr "File in cui scrivere"
+#: src/postulo_helloworld/notifier.py:91 src/postulo_helloworld/notifier.py:98
+#, python-format
+msgid "Give the name of a file on its own, not a path: %(name)s is not one."
+msgstr ""
 
-#: src/postulo_helloworld/notifier.py:49
+#: src/postulo_helloworld/notifier.py:129
 #, draft
 msgid "Greeting"
 msgstr "Saluto"
 
-#: src/postulo_helloworld/notifier.py:36
+#: src/postulo_helloworld/notifier.py:111
 #, draft
 msgid "Hello world"
 msgstr "Ciao mondo"
 
-#: src/postulo_helloworld/notifier.py:53
+#: src/postulo_helloworld/notifier.py:133
 #, draft
 msgid "Starts every line, so you can tell this plugin's lines apart."
 msgstr "Apre ogni riga, così puoi distinguere le righe di questo plugin."
 
-#: src/postulo_helloworld/notifier.py:60
+#: src/postulo_helloworld/notifier.py:148
 #, draft
 msgid "This is a test from Postulo."
 msgstr "Questo è un test da Postulo."

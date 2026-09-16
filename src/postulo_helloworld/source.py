@@ -21,13 +21,27 @@ is the shape, not the parsing. Replace ``can_handle`` and ``parse`` with your bo
 from __future__ import annotations
 
 from html.parser import HTMLParser
+from urllib.parse import urlsplit
 
-from postulo.plugins.base import JobPostingData
+from postulo.plugins.api import JobPostingData
 
 from . import __version__
 
 #: Where this source's pages live. A real source checks its board's hostname.
 HOSTS = ("hello.example", "helloworld.example")
+
+
+def _host_of(url: str) -> str | None:
+    """The host of ``url`` when this source's board serves it, otherwise ``None``.
+
+    Exactly one of :data:`HOSTS`, or a subdomain of one on a dot boundary -- so
+    ``jobs.hello.example`` is ours and ``nothello.example`` is not.
+    """
+    host = (urlsplit(url).hostname or "").lower()
+    for known in HOSTS:
+        if host == known or host.endswith(f".{known}"):
+            return host
+    return None
 
 
 class _PostingReader(HTMLParser):
@@ -79,8 +93,14 @@ class HelloWorldSource:
     version = __version__
 
     def can_handle(self, url: str) -> bool:
-        """Whether this source wants the page. Cheap, and never fetches anything."""
-        return any(host in url for host in HOSTS)
+        """Whether this source wants the page. Cheap, and never fetches anything.
+
+        Compare the **hostname**, never the whole address. ``"hello.example" in url`` also
+        answers yes to ``https://evil.test/?hello.example``, and a source that says yes
+        gets first refusal on parsing a page it knows nothing about: third-party sources
+        are tried before Postulo's own.
+        """
+        return _host_of(url) is not None
 
     def parse(self, url: str, html: str) -> JobPostingData | None:
         """The posting on the page, or ``None`` when the page holds none.
@@ -99,5 +119,7 @@ class HelloWorldSource:
             location=found.get("location", ""),
             description=found.get("description", ""),
             url=url,
-            source="hello.example",
+            # Where it came from, recorded on the capture: the host that served the page,
+            # not a constant, so a posting can be told from one read elsewhere.
+            source=_host_of(url) or HOSTS[0],
         )

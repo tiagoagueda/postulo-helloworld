@@ -21,10 +21,12 @@ REPO = Path(__file__).resolve().parents[1]
 #: Filled while working, so a change is seen in three languages.
 WORKING = ("fr-fr", "pt-pt")
 #: The twenty-four, minus the source. Complete in a published version, not in every commit.
+# fmt: off
 EUROPEAN_UNION = (
     "bg", "cs", "da", "de", "el", "es", "et", "fi", "fr-fr", "ga", "hr", "hu", "it",
     "lt", "lv", "mt", "nl", "pl", "pt-pt", "ro", "sk", "sl", "sv",
 )
+# fmt: on
 
 
 @pytest.fixture(scope="module")

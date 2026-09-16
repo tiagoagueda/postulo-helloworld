@@ -1,4 +1,14 @@
 # Runs the plugin's tests inside a real Postulo, fetched from its repository by uv.
+#
+# The job image is Node rather than Python, which looks backwards and is not: Forgejo runs
+# `actions/checkout` as JavaScript *inside the job container*, so a container without
+# `node` fails the checkout before a single step of this file runs — which is what every
+# run here did, on `python:3.14-slim-bookworm` (#2). uv brings its own Python, so the image
+# only has to carry Node, git and curl. Postulo's own CI is Node for the same reason and
+# says so.
+#
+# `runs-on` must name a label the runner actually advertises. A label no runner has does
+# not fail the job: it queues for ever, which looks exactly like CI passing.
 name: CI
 
 on:
@@ -6,21 +16,29 @@ on:
     branches: [main]
   pull_request:
 
+# Every job here only reads the repository.
+permissions:
+  contents: read
+
 jobs:
   test:
     runs-on: ubuntu-latest
     container:
-      image: python:3.14-slim-bookworm
+      # Debian with Node, git and curl already present.
+      image: node:22-bookworm
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          # The token is not needed after the checkout; leaving it in .git/config would
+          # hand it to every later step.
+          persist-credentials: false
 
-      - name: Install git and WeasyPrint's libraries
-        # git for the Postulo dependency; the libraries because Postulo's settings import
-        # its PDF backend, which loads Pango.
+      - name: Install WeasyPrint's libraries
+        # Postulo's settings import its PDF backend, which loads Pango.
         run: |
           apt-get update
-          apt-get install -y --no-install-recommends git curl libpango-1.0-0 libpangoft2-1.0-0 libharfbuzz0b libfontconfig1
+          apt-get install -y --no-install-recommends libpango-1.0-0 libpangoft2-1.0-0 libharfbuzz0b libfontconfig1
           rm -rf /var/lib/apt/lists/*
 
       - name: Install uv
@@ -29,10 +47,14 @@ jobs:
           echo "$HOME/.local/bin" >> "$GITHUB_PATH"
 
       - name: Install the plugin, Postulo and the test tools
-        run: uv sync
+        # --locked: the lock is the Postulo this example was proved against, and a lock that
+        # no longer matches pyproject.toml is a resolution nobody reviewed.
+        run: uv sync --locked --python 3.14
 
       - name: Lint
-        run: uv run ruff check .
+        run: |
+          uv run ruff check --output-format=full .
+          uv run ruff format --check .
 
       - name: Fail if the compiled catalogues are out of date
         # Postulo's own catalogue tool, installed with Postulo as a dev dependency; no GNU

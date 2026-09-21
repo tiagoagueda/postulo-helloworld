@@ -6,49 +6,51 @@ a change to one is a deprecation entry before it is a removal. `postulo.plugins.
 release without a word -- so a plugin that imports them is a plugin that breaks on somebody
 else's Tuesday.
 
-It is checked here rather than reviewed by eye because the import that reaches past the
-surface is never the one somebody meant to write: it is the one an editor completed. Copy
-this file into your own plugin; the only line to change is ``PACKAGE``.
+It is checked rather than reviewed by eye because the import that reaches past the surface
+is never the one somebody meant to write: it is the one an editor completed.
+
+**Do not copy this file.** It used to say the opposite -- *"copy this into your own plugin;
+the only line to change is PACKAGE"* -- and four plugins did, which is how five
+near-identical AST walks ended up in five repositories, no two agreeing about relative
+imports or about what counted as reaching past. The core publishes the walk now
+(postulo/postulo#229), so the two lines below are the whole of what a plugin needs:
+``assert_imports_only_the_surface`` over your package, and the names you ask of the surface
+asserted against ``api.__all__``. This is the plugin people are told to copy, so what it
+shows should be the check the core maintains rather than a snapshot of it.
 """
 
 from __future__ import annotations
 
-import ast
 from pathlib import Path
 
-PACKAGE = Path(__file__).resolve().parents[1] / "src" / "postulo_helloworld"
+import pytest
+from postulo.plugins.testing import SURFACE, assert_imports_only_the_surface, imports_of
 
-#: The one module a plugin may import from Postulo.
-SURFACE = "postulo.plugins.api"
+PACKAGE = "postulo_helloworld"
+SOURCE = Path(__file__).resolve().parents[1] / "src" / PACKAGE
 
 
-def postulo_imports(source: str) -> set[str]:
-    """Every ``postulo`` module a file imports, however it spells the import."""
-    found: set[str] = set()
-    for node in ast.walk(ast.parse(source)):
-        if isinstance(node, ast.ImportFrom) and node.level == 0:
-            modules = [node.module or ""]
-        elif isinstance(node, ast.Import):
-            modules = [alias.name for alias in node.names]
-        else:
-            continue
-        found.update(m for m in modules if m == "postulo" or m.startswith("postulo."))
-    return found
+def test_there_is_something_to_check():
+    """A sanity check on the check: an empty package would make everything below pass."""
+    assert len(list(SOURCE.rglob("*.py"))) >= 2
 
 
 def test_the_package_imports_only_the_plugin_surface():
-    reaching = sorted(
-        f"{path.relative_to(PACKAGE.parent).as_posix()} imports {module}"
-        for path in PACKAGE.rglob("*.py")
-        for module in postulo_imports(path.read_text(encoding="utf-8"))
-        if module != SURFACE
-    )
-    assert reaching == [], f"import these from {SURFACE} instead: {reaching}"
+    assert_imports_only_the_surface(SOURCE, package=PACKAGE)
 
 
-def test_the_check_can_see_an_import_that_reaches_past_the_surface():
-    """The check is worth nothing if it cannot fail; this is what proves it looks."""
-    assert postulo_imports("from postulo.plugins.base import FieldSpec") == {"postulo.plugins.base"}
-    assert postulo_imports("import postulo.core.models as m") == {"postulo.core.models"}
-    assert postulo_imports("from . import __version__") == set()
-    assert postulo_imports("from postulo_helloworld.source import HOSTS") == set()
+def test_the_surface_is_what_this_plugin_actually_uses():
+    """The other half: the surface is imported, rather than merely not reached past."""
+    assert imports_of(SOURCE, package=PACKAGE) == {SURFACE}
+
+
+@pytest.mark.parametrize("name", ["FieldSpec", "JobPostingData", "TestResult"])
+def test_the_surface_promises_what_this_plugin_asks_of_it(name: str):
+    """Not merely importable: on ``__all__``, which is what the promise is made about.
+
+    A name that resolves today because it happens to be reachable is not a name that keeps
+    working across a release. Three names is the whole of what the smallest plugin needs.
+    """
+    from postulo.plugins import api
+
+    assert name in api.__all__, f"{SURFACE} does not promise {name}"

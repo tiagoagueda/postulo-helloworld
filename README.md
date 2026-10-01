@@ -16,7 +16,7 @@ its own, tests that run it inside a real Postulo, and a CI workflow.
 | --- | --- |
 | `src/postulo_helloworld/source.py` | A **capture source**: four names (`name`, `version`, `can_handle`, `parse`), no base class. Reads a posting out of a tiny page format and returns `JobPostingData`. |
 | `src/postulo_helloworld/notifier.py` | A **notifier**, one of the connected plugins: declares the fields it needs, Postulo draws the form, and `send()` appends each notification to a file. The person names the file; the operator names the directory, and `file_for()` explains at length why it is that way round. |
-| `src/postulo_helloworld/locale/` | **This plugin's own translations**, French and Portuguese. Postulo never translates a plugin's strings; every plugin holds its locale. |
+| `src/postulo_helloworld/locale/` | **This plugin's own translations**, French and Portuguese. Postulo never translates a plugin's strings; every plugin holds its locale. The directories carry gettext's names (`fr_FR`, `pt_PT`), written by a tool; everywhere else a language is `fr-FR`, as *Make it yours* explains. |
 | `tests/` | Runs both plugins through Postulo's registry, exactly as an instance would, and checks the French comes from this package. `tests/test_surface.py` fails on an import that reaches past `postulo.plugins.api`, by calling the core's own `postulo.plugins.testing` — do that rather than copying this file. `tests/settings.py` is Postulo's test configuration, borrowed. |
 | `pyproject.toml` | The entry points that make the plugins appear, and nothing else: a plugin has no dependencies of its own, it runs inside Postulo's environment. |
 
@@ -54,6 +54,19 @@ never a path.
    `.mo` files: they ship with the package. English is the source; French and European
    Portuguese are filled while working, and `uv run pytest -m release` holds the
    twenty-four European Union catalogues complete before a release.
+
+   **A language code is a BCP 47 tag in its canonical form**: the language in lower
+   case, a script with a capital, a region in capitals — `fr-FR`, `pt-BR`, `sr-Cyrl`.
+   That is how Postulo writes every code it hands you (`Notification.language`,
+   `DocumentMetadata.language`) and how you write one in code, in tests and in what you
+   store or send. The directories under `locale/` are the one exception, and not yours to
+   spell: `pt_BR` and `sr_Cyrl` are gettext's names for a catalogue, which
+   `postulo-messages` derives from the tags, so nobody types one. A code that comes from
+   outside — a form, a file, another service — may be spelt any way: put it in the
+   canonical form with `language_tag`, check that it is one with `is_language_tag`, and
+   find the nearest of the languages you have with `language_match`, all from
+   `postulo.plugins.api`. `tests/test_catalogues.py` fails on a code written in lower
+   case anywhere in the repository.
 5. Run the tests:
 
    ```sh
@@ -86,6 +99,10 @@ is in Postulo's
 - **Raise on failure in `send()`.** Postulo logs it and shows it on the connection; it
   never fails whatever caused the notification.
 - **Translate your own strings.** Ship `locale/`; Postulo reads it when it loads you.
+- **Write a language code the way Postulo does: `pt-BR`.** A BCP 47 tag in its canonical
+  form, everywhere but the names of the `locale/` directories. Compare two with
+  `language_match`, never with `==`: tags are the same whatever their case, and `pt-BR`
+  asked of a plugin that only has `pt` should find it.
 
 ## Licence
 

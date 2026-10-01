@@ -3,7 +3,7 @@ name = "postulo-helloworld"
 version = "0.3.0"
 description = "The smallest Postulo plugin there is: a capture source and a notifier, translated and tested. Copy it."
 readme = "README.md"
-requires-python = ">=3.12"
+requires-python = ">=3.12.4"
 license = "MIT"
 authors = [{ name = "Tiago Agueda" }]
 keywords = ["postulo", "plugin", "example"]
@@ -43,7 +43,7 @@ packages = ["src/postulo_helloworld"]
 # Postulo itself, for the tests: they run the plugin inside a real Postulo, through its
 # registry, exactly as an instance would.
 dev = [
-    "postulo @ git+https://source.tiagoagueda.com/postulo/postulo.git@1d6cdd7e0",
+    "postulo @ git+https://source.tiagoagueda.com/postulo/postulo.git@a6363a397",
     "pytest>=8.3",
     "pytest-django>=4.14",
     "ruff>=0.16",

@@ -180,10 +180,10 @@ def test_the_plugin_speaks_french_and_portuguese_by_itself():
     """Postulo's catalogues know nothing of this plugin; its own locale/ is what translates."""
     registry.plugins("notifier", refresh=True)
     notifier = registry.find_plugin("notifier", "helloworld")
-    with translation.override("fr-fr"):
+    with translation.override("fr-FR"):
         assert str(notifier.label) == "Bonjour le monde"
         assert notifier.config_fields()[0].label == "Nom du fichier"
-    with translation.override("pt-pt"):
+    with translation.override("pt-PT"):
         assert str(notifier.label) == "Olá, mundo"
-    with translation.override("en-gb"):
+    with translation.override("en-GB"):
         assert str(notifier.label) == "Hello world"

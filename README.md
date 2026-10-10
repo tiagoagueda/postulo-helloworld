@@ -42,7 +42,10 @@ never a path.
 1. Copy the repository and rename `postulo_helloworld` to your package.
 2. Keep or delete either plugin; a package may hold one kind or several.
 3. Change the entry points in `pyproject.toml` to point at your classes. The groups are
-   `postulo.sources`, `postulo.notifiers`, `postulo.stores` and `postulo.syncs`.
+   `postulo.sources`, `postulo.notifiers`, `postulo.stores` and `postulo.syncs`. A plugin's
+   `name` is unique across every kind on an instance -- its switch, its form and its logo are
+   keyed by it, and Postulo leaves out a second plugin of the same name -- which is why the
+   source here is `helloworld` and the notifier `helloworld-notifier`.
 4. Wrap every string a person reads in `gettext` / `gettext_lazy`, then:
 
    ```sh
@@ -50,9 +53,12 @@ never a path.
    uv run postulo-messages compile   # writes the .mo files, no gettext needed
    ```
 
-   Postulo's own catalogue tool, installed with Postulo as a dev dependency. Commit the
-   `.mo` files: they ship with the package. English is the source; French and European
-   Portuguese are filled while working, and `uv run pytest -m release` holds the
+   Postulo's own catalogue tool, installed with Postulo as a dev dependency. Do not
+   commit the `.mo` files: `compile` writes them before the tests and before `uv build`,
+   and `pyproject.toml` puts them in the wheel. English is the source. **Translate your
+   plugin wherever you like**; the official plugins, this one included, are translated in
+   Weblate at translate.tiagoagueda.com and never in a commit (`uv run postulo-messages
+   guard` refuses one, postulo/postulo#706), and `uv run pytest -m release` holds the
    twenty-four European Union catalogues complete before a release.
 
    **A language code is a BCP 47 tag in its canonical form**: the language in lower

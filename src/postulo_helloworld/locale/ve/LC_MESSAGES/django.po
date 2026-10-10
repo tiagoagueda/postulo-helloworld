@@ -1,11 +1,9 @@
 # Tshivenḓa translation of postulo-helloworld.
-# This file is distributed under the same license as Postulo (AGPL-3.0-or-later).
+# This file is distributed under the same license as the postulo-helloworld package (MIT).
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Postulo\n"
-"Report-Msgid-Bugs-To: https://source.tiagoagueda.com/postulo/postulo/issues\n"
-"POT-Creation-Date: 2026-09-16 08:36+0000\n"
+"Project-Id-Version: postulo-helloworld\n"
 "PO-Revision-Date: 2026-09-13 04:00+0000\n"
 "Last-Translator: Postulo contributors\n"
 "Language-Team: Tshivenḓa\n"
@@ -16,41 +14,40 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: postulo scripts/messages.py\n"
 
-#: src/postulo_helloworld/notifier.py:155
+#: src/postulo_helloworld/notifier.py
 msgid "A line was written. Hello, world!"
 msgstr ""
 
-#: src/postulo_helloworld/notifier.py:121
-msgid ""
-"A name, not a path: the file is created in the directory this instance gives the plugin. Each notification is appended as one line."
+#: src/postulo_helloworld/notifier.py
+msgid "A name, not a path: the file is created in the directory this instance gives the plugin. Each notification is appended as one line."
 msgstr ""
 
-#: src/postulo_helloworld/notifier.py:153
+#: src/postulo_helloworld/notifier.py
 #, python-format
 msgid "Could not write to the file: %(error)s"
 msgstr ""
 
-#: src/postulo_helloworld/notifier.py:118
+#: src/postulo_helloworld/notifier.py
 msgid "File name"
 msgstr ""
 
-#: src/postulo_helloworld/notifier.py:91 src/postulo_helloworld/notifier.py:98
+#: src/postulo_helloworld/notifier.py
 #, python-format
 msgid "Give the name of a file on its own, not a path: %(name)s is not one."
 msgstr ""
 
-#: src/postulo_helloworld/notifier.py:129
+#: src/postulo_helloworld/notifier.py
 msgid "Greeting"
 msgstr ""
 
-#: src/postulo_helloworld/notifier.py:111
+#: src/postulo_helloworld/notifier.py
 msgid "Hello world"
 msgstr ""
 
-#: src/postulo_helloworld/notifier.py:133
+#: src/postulo_helloworld/notifier.py
 msgid "Starts every line, so you can tell this plugin's lines apart."
 msgstr ""
 
-#: src/postulo_helloworld/notifier.py:148
+#: src/postulo_helloworld/notifier.py
 msgid "This is a test from Postulo."
 msgstr ""

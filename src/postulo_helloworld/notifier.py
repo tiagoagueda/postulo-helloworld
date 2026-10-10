@@ -102,7 +102,10 @@ def file_for(name: str) -> Path:
 
 
 class HelloWorldNotifier:
-    name = "helloworld"
+    # Not `helloworld`, which the source holds: a plugin's name is unique across every
+    # kind on an instance -- its switch, its form and its logo are keyed by it -- and
+    # Postulo leaves out a second plugin of the same name (postulo/postulo#593).
+    name = "helloworld-notifier"
     version = __version__
     #: One of the connected kinds Postulo knows: ``notifier``, ``store`` or ``sync``.
     kind = "notifier"

@@ -171,19 +171,33 @@ def test_one_notification_is_one_line_whatever_the_page_said(directory):
 def test_postulo_finds_both_plugins_through_their_entry_points():
     sources = {plugin.name for plugin in registry.plugins("source", refresh=True)}
     assert "helloworld" in sources
-    notifier = registry.find_plugin("notifier", "helloworld")
+    notifier = registry.find_plugin("notifier", "helloworld-notifier")
     assert notifier is not None and notifier.kind == "notifier"
 
 
 @pytest.mark.django_db
 def test_the_plugin_speaks_french_and_portuguese_by_itself():
-    """Postulo's catalogues know nothing of this plugin; its own locale/ is what translates."""
+    """Postulo's catalogues know nothing of this plugin; its own locale/ is what translates.
+
+    The words are read from the plugin's catalogue rather than written here: translations are
+    made in Weblate (postulo/postulo#706), and a speaker improving one must not fail this.
+    """
+    from pathlib import Path
+
+    from postulo.core import messages_tool
+
     registry.plugins("notifier", refresh=True)
-    notifier = registry.find_plugin("notifier", "helloworld")
-    with translation.override("fr-FR"):
-        assert str(notifier.label) == "Bonjour le monde"
-        assert notifier.config_fields()[0].label == "Nom du fichier"
-    with translation.override("pt-PT"):
-        assert str(notifier.label) == "Olá, mundo"
+    notifier = registry.find_plugin("notifier", "helloworld-notifier")
+    package = Path(__file__).resolve().parents[1] / "src" / "postulo_helloworld" / "locale"
+    for code, directory in (("fr-FR", "fr_FR"), ("pt-PT", "pt_PT")):
+        catalogue = messages_tool.parse(
+            (package / directory / "LC_MESSAGES" / "django.po").read_text(encoding="utf-8")
+        )
+        hello = catalogue.messages[(None, "Hello world")].msgstr[0]
+        assert hello and hello != "Hello world", f"{code} has no word for the label"
+        with translation.override(code):
+            assert str(notifier.label) == hello
+            field = catalogue.messages[(None, "File name")].msgstr[0]
+            assert notifier.config_fields()[0].label == (field or "File name")
     with translation.override("en-GB"):
         assert str(notifier.label) == "Hello world"

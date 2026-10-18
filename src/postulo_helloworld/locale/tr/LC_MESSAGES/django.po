@@ -4,9 +4,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: postulo-helloworld\n"
-"PO-Revision-Date: 2026-09-13 04:00+0000\n"
-"Last-Translator: Postulo contributors\n"
-"Language-Team: Türkçe\n"
+"PO-Revision-Date: 2026-10-10 12:45+0000\n"
+"Last-Translator: LibreTranslate <noreply-mt-libretranslate@weblate.org>\n"
+"Language-Team: Turkish <https://translate.tiagoagueda.com/projects/postulo/plugin-helloworld/tr/>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -15,39 +15,46 @@ msgstr ""
 "X-Generator: postulo scripts/messages.py\n"
 
 #: src/postulo_helloworld/notifier.py
+#, fuzzy
 msgid "A line was written. Hello, world!"
-msgstr ""
+msgstr "Bir çizgi yazılmıştır. Merhaba, dünya!"
 
 #: src/postulo_helloworld/notifier.py
+#, fuzzy
 msgid "A name, not a path: the file is created in the directory this instance gives the plugin. Each notification is appended as one line."
-msgstr ""
+msgstr "Bir isim, bir yol değil: dosya bu örnekte oluşturulan eklentiye verir. Her bildirim bir çizgi olarak yazılır."
 
 #: src/postulo_helloworld/notifier.py
-#, python-format
+#, fuzzy, python-format
 msgid "Could not write to the file: %(error)s"
-msgstr ""
+msgstr "Dosyaya yazılamaz: %(error)s"
 
 #: src/postulo_helloworld/notifier.py
+#, fuzzy
 msgid "File name"
-msgstr ""
+msgstr "Dosya adı"
 
 #: src/postulo_helloworld/notifier.py
-#, python-format
+#, fuzzy, python-format
 msgid "Give the name of a file on its own, not a path: %(name)s is not one."
-msgstr ""
+msgstr "Bir dosyanın adını kendi başına verin, bir yol değil: %(name)s bir tane değil."
 
 #: src/postulo_helloworld/notifier.py
+#, fuzzy
 msgid "Greeting"
-msgstr ""
+msgstr "Selam"
 
 #: src/postulo_helloworld/notifier.py
+#, fuzzy
 msgid "Hello world"
-msgstr ""
+msgstr "Merhaba dünya"
 
 #: src/postulo_helloworld/notifier.py
+#, fuzzy
 msgid "Starts every line, so you can tell this plugin's lines apart."
-msgstr ""
+msgstr "Her çizgiye başlayın, bu yüzden bu eklentinin çizgilerini ayrı söyleyebilirsiniz."
 
 #: src/postulo_helloworld/notifier.py
+#, fuzzy
 msgid "This is a test from Postulo."
-msgstr ""
+msgstr "Bu Postulo'dan bir test."

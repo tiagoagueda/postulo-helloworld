@@ -122,5 +122,7 @@ jobs:
         # Postulo (a git dependency, not on PyPI, so `--strict` could not look it up; the
         # core audits its own lock). Anything else that cannot be looked up still fails.
         run: |
-          uv export --no-emit-project --no-emit-package postulo --all-groups             --format requirements-txt --no-hashes > /tmp/locked-requirements.txt
-          uv run --with pip-audit==2.10.1 pip-audit --strict --progress-spinner off             -r /tmp/locked-requirements.txt
+          uv export --no-emit-project --no-emit-package postulo --all-groups \
+            --format requirements-txt --no-hashes > /tmp/locked-requirements.txt
+          uv run --with pip-audit==2.10.1 pip-audit --strict --progress-spinner off \
+            -r /tmp/locked-requirements.txt

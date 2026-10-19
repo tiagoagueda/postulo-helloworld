@@ -8,13 +8,21 @@ European Union catalogues are complete in a published version -- `uv run pytest 
 
 from __future__ import annotations
 
+import sys
 from pathlib import Path
 
 import pytest
 from django.conf import settings
 
-messages_tool = pytest.importorskip(
-    "postulo.core.messages_tool", reason="the catalogue tool arrived with Postulo 0.3"
+try:
+    from postulo.core import messages_tool
+except ImportError:  # pragma: no cover - only against a Postulo older than 0.3
+    messages_tool = None
+
+#: What a missing catalogue tool means, and what to do about it.
+NO_TOOL = (
+    "the catalogue tool arrived with Postulo 0.3; this repository's dev dependency "
+    "pins the core, so seeing this means the pin has slipped"
 )
 
 REPO = Path(__file__).resolve().parents[1]
@@ -31,8 +39,18 @@ EUROPEAN_UNION = (
 # fmt: on
 
 
-@pytest.fixture(scope="module")
-def tool():
+@pytest.fixture
+def tool(request):
+    """The catalogue tool -- skipped past while working, never at a release.
+
+    `importorskip` used to stand here, and a skip is the wrong answer to "the core this was
+    pinned to does not have the tool": the release gate went green by running nothing at all
+    (#11). Under `-m release` a missing tool is a failure, which is what a gate is for.
+    """
+    if messages_tool is None:
+        if request.node.get_closest_marker("release"):
+            pytest.fail(NO_TOOL)
+        pytest.skip(NO_TOOL)
     messages_tool.use(REPO)
     return messages_tool
 
@@ -60,6 +78,30 @@ def test_every_language_postulo_offers_has_a_catalogue(tool):
 def test_every_european_union_language_stays_complete(tool, code):
     gaps = missing(tool, code)
     assert gaps == [], f"{code}: {len(gaps)} untranslated, e.g. {gaps[:3]}"
+
+
+def test_a_missing_catalogue_tool_fails_the_release_gate_and_only_skips_otherwise(
+    request, monkeypatch
+):
+    """The gate must not go green by running nothing (#11)."""
+    monkeypatch.setattr(sys.modules[__name__], "messages_tool", None)
+    plain = _FakeRequest(None)
+    with pytest.raises(pytest.skip.Exception):
+        tool.__wrapped__(plain)
+    marked = _FakeRequest(pytest.mark.release)
+    with pytest.raises(pytest.fail.Exception):
+        tool.__wrapped__(marked)
+
+
+class _FakeRequest:
+    """Just enough of a pytest request for the `tool` fixture to ask about its marker."""
+
+    def __init__(self, marker):
+        self.node = self
+        self._marker = marker
+
+    def get_closest_marker(self, name):
+        return self._marker if name == "release" else None
 
 
 def test_a_language_code_is_written_one_way():

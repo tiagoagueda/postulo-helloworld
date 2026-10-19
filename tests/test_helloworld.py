@@ -59,6 +59,44 @@ def test_the_source_declines_what_it_does_not_understand():
     )
 
 
+MESSY_PAGE = """<!doctype html>
+<html><body>
+<header><h1>Hello Jobs</h1></header>
+<article data-posting>
+  <h1>Research<br>Engineer</h1>
+  <p data-company><img src="logo.png">Black<br>Mesa</p>
+  <p data-location>Lyon<br>
+  <div data-description>We need someone.<br>Apply now.
+    <p>Bring a crowbar.
+    <p>And a lunch.<hr><img src="x.png">Soon.</div>
+  <h1>Not the title</h1>
+</article>
+<footer><h1>Footer</h1><p data-company>Elsewhere</p></footer>
+</body></html>"""
+
+
+def test_elements_without_an_end_tag_do_not_hold_a_field_open():
+    """A `<br>`, an `<img>` or an unclosed `<p>` inside a field leaves the others intact (#9)."""
+    posting = HelloWorldSource().parse("https://hello.example/jobs/42", MESSY_PAGE)
+    assert posting is not None
+    assert posting.title == "Research Engineer", "the site's <h1> is not the posting's"
+    assert posting.company_name == "Black Mesa"
+    assert posting.location == "Lyon"
+    assert posting.description == "We need someone. Apply now. Bring a crowbar. And a lunch.Soon."
+
+
+def test_a_field_outside_the_posting_is_not_read():
+    page = "<h1>Site</h1><p data-company>Elsewhere</p><article data-posting><h1>Job</h1></article>"
+    posting = HelloWorldSource().parse("https://hello.example/jobs/1", page)
+    assert posting is not None
+    assert (posting.title, posting.company_name) == ("Job", "")
+
+
+def test_a_page_whose_title_is_too_long_is_declined_not_an_error():
+    page = f"<article data-posting><h1>{'Engineer ' * 100}</h1></article>"
+    assert HelloWorldSource().parse("https://hello.example/jobs/1", page) is None
+
+
 @pytest.mark.parametrize(
     "url",
     [
@@ -147,11 +185,25 @@ def test_a_directory_that_cannot_be_written_to_fails_the_test_button_in_words(
     directory, monkeypatch
 ):
     def refuse(*args, **kwargs):
-        raise PermissionError("read-only file system")
+        # What the operating system raises: the reason and the server-side path.
+        raise PermissionError(13, "Permission denied", str(directory / "hello.log"))
 
     monkeypatch.setattr("pathlib.Path.open", refuse)
     result = HelloWorldNotifier().test({"file": "hello.log"})
     assert not result.ok and "Could not write" in result.message
+    assert "Permission denied" in result.message, "the reason is said"
+    assert str(directory) not in result.message, "the operator's path is not (#13)"
+    assert "hello.log" not in result.message
+
+
+def test_an_error_without_a_reason_is_named_by_its_type_not_by_its_text(directory, monkeypatch):
+    def refuse(*args, **kwargs):
+        raise OSError(str(directory / "hello.log"))
+
+    monkeypatch.setattr("pathlib.Path.open", refuse)
+    result = HelloWorldNotifier().test({"file": "hello.log"})
+    assert not result.ok and "OSError" in result.message
+    assert str(directory) not in result.message
 
 
 def test_one_notification_is_one_line_whatever_the_page_said(directory):

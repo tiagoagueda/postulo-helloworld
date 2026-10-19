@@ -152,8 +152,13 @@ class HelloWorldNotifier:
         except RefusedName as refusal:
             return TestResult(False, str(refusal))
         except OSError as error:
+            # Say what failed, not where: ``str(error)`` carries the file's full path, which
+            # is the operator's and which :func:`file_for` keeps out of a person's hands.
+            # ``strerror`` is the reason alone ("Permission denied"); an error without one is
+            # named by its type. Copy this shape, not ``% {"error": error}``.
+            reason = error.strerror or type(error).__name__
             return TestResult(
-                False, str(_("Could not write to the file: %(error)s")) % {"error": error}
+                False, str(_("Could not write to the file: %(error)s")) % {"error": reason}
             )
         return TestResult(True, str(_("A line was written. Hello, world!")))
 

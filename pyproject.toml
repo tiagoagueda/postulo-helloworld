@@ -47,7 +47,7 @@ artifacts = ["src/postulo_helloworld/locale/*/LC_MESSAGES/django.mo"]
 # Postulo itself, for the tests: they run the plugin inside a real Postulo, through its
 # registry, exactly as an instance would.
 dev = [
-    "postulo @ git+https://source.tiagoagueda.com/postulo/postulo.git@e014152fcdffac0f2bae4bdbddf8c315f58ab4d3",
+    "postulo @ git+https://source.tiagoagueda.com/postulo/postulo.git@42be52048214fd98ed96d881fdf9fbadc10c4b73",
     "pytest>=8.3",
     "pytest-django>=4.14",
     "ruff>=0.16",

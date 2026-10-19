@@ -147,11 +147,25 @@ def test_a_directory_that_cannot_be_written_to_fails_the_test_button_in_words(
     directory, monkeypatch
 ):
     def refuse(*args, **kwargs):
-        raise PermissionError("read-only file system")
+        # What the operating system raises: the reason and the server-side path.
+        raise PermissionError(13, "Permission denied", str(directory / "hello.log"))
 
     monkeypatch.setattr("pathlib.Path.open", refuse)
     result = HelloWorldNotifier().test({"file": "hello.log"})
     assert not result.ok and "Could not write" in result.message
+    assert "Permission denied" in result.message, "the reason is said"
+    assert str(directory) not in result.message, "the operator's path is not (#13)"
+    assert "hello.log" not in result.message
+
+
+def test_an_error_without_a_reason_is_named_by_its_type_not_by_its_text(directory, monkeypatch):
+    def refuse(*args, **kwargs):
+        raise OSError(str(directory / "hello.log"))
+
+    monkeypatch.setattr("pathlib.Path.open", refuse)
+    result = HelloWorldNotifier().test({"file": "hello.log"})
+    assert not result.ok and "OSError" in result.message
+    assert str(directory) not in result.message
 
 
 def test_one_notification_is_one_line_whatever_the_page_said(directory):

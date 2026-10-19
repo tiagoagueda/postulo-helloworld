@@ -59,6 +59,44 @@ def test_the_source_declines_what_it_does_not_understand():
     )
 
 
+MESSY_PAGE = """<!doctype html>
+<html><body>
+<header><h1>Hello Jobs</h1></header>
+<article data-posting>
+  <h1>Research<br>Engineer</h1>
+  <p data-company><img src="logo.png">Black<br>Mesa</p>
+  <p data-location>Lyon<br>
+  <div data-description>We need someone.<br>Apply now.
+    <p>Bring a crowbar.
+    <p>And a lunch.<hr><img src="x.png">Soon.</div>
+  <h1>Not the title</h1>
+</article>
+<footer><h1>Footer</h1><p data-company>Elsewhere</p></footer>
+</body></html>"""
+
+
+def test_elements_without_an_end_tag_do_not_hold_a_field_open():
+    """A `<br>`, an `<img>` or an unclosed `<p>` inside a field leaves the others intact (#9)."""
+    posting = HelloWorldSource().parse("https://hello.example/jobs/42", MESSY_PAGE)
+    assert posting is not None
+    assert posting.title == "Research Engineer", "the site's <h1> is not the posting's"
+    assert posting.company_name == "Black Mesa"
+    assert posting.location == "Lyon"
+    assert posting.description == "We need someone. Apply now. Bring a crowbar. And a lunch.Soon."
+
+
+def test_a_field_outside_the_posting_is_not_read():
+    page = "<h1>Site</h1><p data-company>Elsewhere</p><article data-posting><h1>Job</h1></article>"
+    posting = HelloWorldSource().parse("https://hello.example/jobs/1", page)
+    assert posting is not None
+    assert (posting.title, posting.company_name) == ("Job", "")
+
+
+def test_a_page_whose_title_is_too_long_is_declined_not_an_error():
+    page = f"<article data-posting><h1>{'Engineer ' * 100}</h1></article>"
+    assert HelloWorldSource().parse("https://hello.example/jobs/1", page) is None
+
+
 @pytest.mark.parametrize(
     "url",
     [

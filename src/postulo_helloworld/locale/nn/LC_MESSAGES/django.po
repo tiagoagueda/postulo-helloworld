@@ -4,50 +4,57 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: postulo-helloworld\n"
-"PO-Revision-Date: 2026-10-19 07:01+0000\n"
-"Last-Translator: Postulo contributors\n"
-"Language-Team: norsk nynorsk\n"
+"PO-Revision-Date: 2026-10-22 21:57+0000\n"
+"Last-Translator: Administrator <weblate@tiagoagueda.com>\n"
+"Language-Team: Norwegian Nynorsk <https://translate.tiagoagueda.com/projects/postulo/plugin-helloworld/nn/>\n"
 "Language: nn\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: postulo-messages\n"
 
 #: src/postulo_helloworld/notifier.py
+#, fuzzy
 msgid "A line was written. Hello, world!"
-msgstr ""
+msgstr "Ei linje vart skriven. Hei, verda!"
 
 #: src/postulo_helloworld/notifier.py
+#, fuzzy
 msgid "A name, not a path: the file is created in the directory this instance gives the plugin. Each notification is appended as one line."
-msgstr ""
+msgstr "Eit namn, ikkje ein sti: fila blir oppretta i katalogen denne instansen gir tillegget. Kvar varsling blir lagd til som éi linje."
 
 #: src/postulo_helloworld/notifier.py
-#, python-format
+#, fuzzy, python-format
 msgid "Could not write to the file: %(error)s"
-msgstr ""
+msgstr "Kunne ikkje skrive til fila: %(error)s"
 
 #: src/postulo_helloworld/notifier.py
+#, fuzzy
 msgid "File name"
-msgstr ""
+msgstr "Filnamn"
 
 #: src/postulo_helloworld/notifier.py
-#, python-format
+#, fuzzy, python-format
 msgid "Give the name of a file on its own, not a path: %(name)s is not one."
-msgstr ""
+msgstr "Oppgi berre namnet på ei fil, ikkje ein sti: %(name)s er ikkje det."
 
 #: src/postulo_helloworld/notifier.py
+#, fuzzy
 msgid "Greeting"
-msgstr ""
+msgstr "Helsing"
 
 #: src/postulo_helloworld/notifier.py
+#, fuzzy
 msgid "Hello world"
-msgstr ""
+msgstr "Hello world"
 
 #: src/postulo_helloworld/notifier.py
+#, fuzzy
 msgid "Starts every line, so you can tell this plugin's lines apart."
-msgstr ""
+msgstr "Står først på kvar linje, så du kan skilje linjene til dette tillegget frå andre."
 
 #: src/postulo_helloworld/notifier.py
+#, fuzzy
 msgid "This is a test from Postulo."
-msgstr ""
+msgstr "Dette er ein test frå Postulo."

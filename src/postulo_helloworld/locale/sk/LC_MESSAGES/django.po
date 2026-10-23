@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: postulo-helloworld\n"
-"PO-Revision-Date: 2026-10-10 12:45+0000\n"
+"PO-Revision-Date: 2026-10-22 21:56+0000\n"
 "Last-Translator: LibreTranslate <noreply-mt-libretranslate@weblate.org>\n"
 "Language-Team: Slovak <https://translate.tiagoagueda.com/projects/postulo/plugin-helloworld/sk/>\n"
 "Language: sk\n"
@@ -15,7 +15,6 @@ msgstr ""
 "X-Generator: postulo scripts/messages.py\n"
 
 #: src/postulo_helloworld/notifier.py
-#, fuzzy
 msgid "A line was written. Hello, world!"
 msgstr "Riadok bol zapísaný. Ahoj, svet!"
 
@@ -25,7 +24,7 @@ msgid "A name, not a path: the file is created in the directory this instance gi
 msgstr "Názov, nie cesta: súbor je vytvorený v adresári v tomto prípade dáva plugin. Každé oznámenie je pripojené ako jeden riadok."
 
 #: src/postulo_helloworld/notifier.py
-#, fuzzy, python-format
+#, python-format
 msgid "Could not write to the file: %(error)s"
 msgstr "Do súboru sa nepodarilo zapísať: %(error)s"
 
@@ -40,21 +39,17 @@ msgid "Give the name of a file on its own, not a path: %(name)s is not one."
 msgstr "Dajte názov súboru sám o sebe, nie cesta: %(name)s nie je jeden."
 
 #: src/postulo_helloworld/notifier.py
-#, fuzzy
 msgid "Greeting"
 msgstr "Pozdrav"
 
 #: src/postulo_helloworld/notifier.py
-#, fuzzy
 msgid "Hello world"
 msgstr "Ahoj svet"
 
 #: src/postulo_helloworld/notifier.py
-#, fuzzy
 msgid "Starts every line, so you can tell this plugin's lines apart."
 msgstr "Začína každý riadok, aby ste riadky tohto doplnku rozoznali."
 
 #: src/postulo_helloworld/notifier.py
-#, fuzzy
 msgid "This is a test from Postulo."
 msgstr "Toto je test z aplikácie Postulo."

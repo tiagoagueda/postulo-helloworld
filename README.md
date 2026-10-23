@@ -59,7 +59,7 @@ never a path.
    plugin wherever you like**; the official plugins, this one included, are translated in
    Weblate at translate.tiagoagueda.com and never in a commit (`uv run postulo-messages
    guard` refuses one, postulo/postulo#706), and `uv run pytest -m release` holds the
-   twenty-four European Union catalogues complete before a release.
+   languages the paired core release selects complete before a release.
 
    **A language code is a BCP 47 tag in its canonical form**: the language in lower
    case, a script with a capital, a region in capitals — `fr-FR`, `pt-BR`, `sr-Cyrl`.

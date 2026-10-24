@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: postulo-helloworld\n"
-"PO-Revision-Date: 2026-10-22 21:56+0000\n"
-"Last-Translator: LibreTranslate <noreply-mt-libretranslate@weblate.org>\n"
+"PO-Revision-Date: 2026-10-24 03:02+0000\n"
+"Last-Translator: Tiago Águeda <tiago.agueda@tiagoagueda.com>\n"
 "Language-Team: Polish <https://translate.tiagoagueda.com/projects/postulo/plugin-helloworld/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -19,9 +19,8 @@ msgid "A line was written. Hello, world!"
 msgstr "Zapisano wiersz. Witaj, świecie!"
 
 #: src/postulo_helloworld/notifier.py
-#, fuzzy
 msgid "A name, not a path: the file is created in the directory this instance gives the plugin. Each notification is appended as one line."
-msgstr "Nazwa, a nie ścieżka: plik jest tworzony w katalogu ta instancja daje wtyczkę. Każde zgłoszenie jest dołączane jako jeden wiersz."
+msgstr "Nazwa, a nie ścieżka: plik jest tworzony w katalogu, który ta instancja przydziela wtyczce. Każde powiadomienie jest dopisywane jako jeden wiersz."
 
 #: src/postulo_helloworld/notifier.py
 #, python-format
@@ -29,14 +28,13 @@ msgid "Could not write to the file: %(error)s"
 msgstr "Nie udało się zapisać do pliku: %(error)s"
 
 #: src/postulo_helloworld/notifier.py
-#, fuzzy
 msgid "File name"
 msgstr "Nazwa pliku"
 
 #: src/postulo_helloworld/notifier.py
-#, fuzzy, python-format
+#, python-format
 msgid "Give the name of a file on its own, not a path: %(name)s is not one."
-msgstr "Podaj nazwę pliku samodzielnie, a nie ścieżkę: %(name)s nie jest jedną."
+msgstr "Podaj samą nazwę pliku, a nie ścieżkę: %(name)s nią nie jest."
 
 #: src/postulo_helloworld/notifier.py
 msgid "Greeting"

@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: postulo-helloworld\n"
-"PO-Revision-Date: 2026-10-22 21:56+0000\n"
-"Last-Translator: LibreTranslate <noreply-mt-libretranslate@weblate.org>\n"
+"PO-Revision-Date: 2026-10-24 03:02+0000\n"
+"Last-Translator: Tiago Águeda <tiago.agueda@tiagoagueda.com>\n"
 "Language-Team: Estonian <https://translate.tiagoagueda.com/projects/postulo/plugin-helloworld/et/>\n"
 "Language: et\n"
 "MIME-Version: 1.0\n"
@@ -19,9 +19,8 @@ msgid "A line was written. Hello, world!"
 msgstr "Rida kirjutati. Tere, maailm!"
 
 #: src/postulo_helloworld/notifier.py
-#, fuzzy
 msgid "A name, not a path: the file is created in the directory this instance gives the plugin. Each notification is appended as one line."
-msgstr "Nimi, mitte asukoht: fail luuakse kataloogis, mille annab plugin. Iga teade on lisatud ühe reana."
+msgstr "Nimi, mitte tee: fail luuakse kataloogi, mille see Postulo pluginale annab. Iga teavitus lisatakse ühe reana."
 
 #: src/postulo_helloworld/notifier.py
 #, python-format
@@ -29,14 +28,13 @@ msgid "Could not write to the file: %(error)s"
 msgstr "Faili ei õnnestunud kirjutada: %(error)s"
 
 #: src/postulo_helloworld/notifier.py
-#, fuzzy
 msgid "File name"
-msgstr "Faili nimi"
+msgstr "Failinimi"
 
 #: src/postulo_helloworld/notifier.py
-#, fuzzy, python-format
+#, python-format
 msgid "Give the name of a file on its own, not a path: %(name)s is not one."
-msgstr "Esitage faili nimi omaette, mitte asukoht: %(name)s ei ole üks."
+msgstr "Sisestage ainult faili nimi, mitte tee: %(name)s ei ole failinimi."
 
 #: src/postulo_helloworld/notifier.py
 msgid "Greeting"

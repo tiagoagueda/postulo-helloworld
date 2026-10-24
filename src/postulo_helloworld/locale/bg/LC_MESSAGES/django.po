@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: postulo-helloworld\n"
-"PO-Revision-Date: 2026-10-22 21:56+0000\n"
-"Last-Translator: LibreTranslate <noreply-mt-libretranslate@weblate.org>\n"
+"PO-Revision-Date: 2026-10-24 03:02+0000\n"
+"Last-Translator: Tiago Águeda <tiago.agueda@tiagoagueda.com>\n"
 "Language-Team: Bulgarian <https://translate.tiagoagueda.com/projects/postulo/plugin-helloworld/bg/>\n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
@@ -19,9 +19,8 @@ msgid "A line was written. Hello, world!"
 msgstr "Записан е ред. Здравей, свят!"
 
 #: src/postulo_helloworld/notifier.py
-#, fuzzy
 msgid "A name, not a path: the file is created in the directory this instance gives the plugin. Each notification is appended as one line."
-msgstr "Име, а не път: файлът е създаден в директорията този случай дава плъгин. Всяко уведомление се прилага като един ред."
+msgstr "Име, а не път: файлът се създава в директорията, която тази инстанция дава на добавката. Всяко известие се добавя като един ред."
 
 #: src/postulo_helloworld/notifier.py
 #, python-format
@@ -29,12 +28,11 @@ msgid "Could not write to the file: %(error)s"
 msgstr "Файлът не можа да бъде записан: %(error)s"
 
 #: src/postulo_helloworld/notifier.py
-#, fuzzy
 msgid "File name"
 msgstr "Име на файл"
 
 #: src/postulo_helloworld/notifier.py
-#, fuzzy, python-format
+#, python-format
 msgid "Give the name of a file on its own, not a path: %(name)s is not one."
 msgstr "Дайте само името на файл, а не път: %(name)s не е такъв."
 

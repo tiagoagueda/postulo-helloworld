@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: postulo-helloworld\n"
-"PO-Revision-Date: 2026-10-22 21:56+0000\n"
-"Last-Translator: LibreTranslate <noreply-mt-libretranslate@weblate.org>\n"
+"PO-Revision-Date: 2026-10-24 05:02+0000\n"
+"Last-Translator: Tiago Águeda <tiago.agueda@tiagoagueda.com>\n"
 "Language-Team: Danish <https://translate.tiagoagueda.com/projects/postulo/plugin-helloworld/da/>\n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
@@ -19,9 +19,8 @@ msgid "A line was written. Hello, world!"
 msgstr "En linje blev skrevet. Hej, verden!"
 
 #: src/postulo_helloworld/notifier.py
-#, fuzzy
 msgid "A name, not a path: the file is created in the directory this instance gives the plugin. Each notification is appended as one line."
-msgstr "Et navn, ikke en sti: filen er oprettet i mappen denne instans giver plugin. Hver meddelelse vedlægges som én linje."
+msgstr "Et navn, ikke en sti: filen oprettes i den mappe, denne instans giver pluginnet. Hver notifikation tilføjes som én linje."
 
 #: src/postulo_helloworld/notifier.py
 #, python-format
@@ -29,14 +28,13 @@ msgid "Could not write to the file: %(error)s"
 msgstr "Kunne ikke skrive til filen: %(error)s"
 
 #: src/postulo_helloworld/notifier.py
-#, fuzzy
 msgid "File name"
 msgstr "Filnavn"
 
 #: src/postulo_helloworld/notifier.py
-#, fuzzy, python-format
+#, python-format
 msgid "Give the name of a file on its own, not a path: %(name)s is not one."
-msgstr "Giv navnet på en fil alene, ikke en sti: %(name)s er ikke en."
+msgstr "Angiv kun navnet på en fil, ikke en sti: %(name)s er ikke et filnavn."
 
 #: src/postulo_helloworld/notifier.py
 msgid "Greeting"

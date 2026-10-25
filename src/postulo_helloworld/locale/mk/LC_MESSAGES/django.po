@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: postulo-helloworld\n"
-"PO-Revision-Date: 2026-10-22 21:56+0000\n"
+"PO-Revision-Date: 2026-10-24 22:02+0000\n"
 "Last-Translator: Tiago Águeda <tiago.agueda@tiagoagueda.com>\n"
 "Language-Team: Macedonian <https://translate.tiagoagueda.com/projects/postulo/plugin-helloworld/mk/>\n"
 "Language: mk\n"
@@ -15,46 +15,39 @@ msgstr ""
 "X-Generator: postulo scripts/messages.py\n"
 
 #: src/postulo_helloworld/notifier.py
-#, fuzzy
 msgid "A line was written. Hello, world!"
 msgstr "Запишан е ред. Hello, world!"
 
 #: src/postulo_helloworld/notifier.py
-#, fuzzy
 msgid "A name, not a path: the file is created in the directory this instance gives the plugin. Each notification is appended as one line."
-msgstr "Име, не патека: датотеката се создава во папката што оваа инсталација му ја дава на додатокот. Секое известување се додава како еден ред."
+msgstr "Име, не патека: датотеката се создава во папката што оваа инстанца му ја дава на додатокот. Секое известување се додава како еден ред."
 
 #: src/postulo_helloworld/notifier.py
-#, fuzzy, python-format
+#, python-format
 msgid "Could not write to the file: %(error)s"
 msgstr "Не може да се запише во датотеката: %(error)s"
 
 #: src/postulo_helloworld/notifier.py
-#, fuzzy
 msgid "File name"
 msgstr "Име на датотеката"
 
 #: src/postulo_helloworld/notifier.py
-#, fuzzy, python-format
+#, python-format
 msgid "Give the name of a file on its own, not a path: %(name)s is not one."
 msgstr "Внесете само име на датотека, не патека: %(name)s не е такво."
 
 #: src/postulo_helloworld/notifier.py
-#, fuzzy
 msgid "Greeting"
 msgstr "Поздрав"
 
 #: src/postulo_helloworld/notifier.py
-#, fuzzy
 msgid "Hello world"
 msgstr "Hello world"
 
 #: src/postulo_helloworld/notifier.py
-#, fuzzy
 msgid "Starts every line, so you can tell this plugin's lines apart."
 msgstr "Го започнува секој ред, за да ги разликувате редовите на овој додаток."
 
 #: src/postulo_helloworld/notifier.py
-#, fuzzy
 msgid "This is a test from Postulo."
 msgstr "Ова е проба од Postulo."

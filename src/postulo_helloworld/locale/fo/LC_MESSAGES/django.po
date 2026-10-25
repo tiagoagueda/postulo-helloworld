@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: postulo-helloworld\n"
-"PO-Revision-Date: 2026-10-22 21:56+0000\n"
-"Last-Translator: Administrator <weblate@tiagoagueda.com>\n"
+"PO-Revision-Date: 2026-10-25 01:02+0000\n"
+"Last-Translator: Tiago Águeda <tiago.agueda@tiagoagueda.com>\n"
 "Language-Team: Faroese <https://translate.tiagoagueda.com/projects/postulo/plugin-helloworld/fo/>\n"
 "Language: fo\n"
 "MIME-Version: 1.0\n"
@@ -15,46 +15,39 @@ msgstr ""
 "X-Generator: postulo-messages\n"
 
 #: src/postulo_helloworld/notifier.py
-#, fuzzy
 msgid "A line was written. Hello, world!"
-msgstr "Ein linja varð skrivað. Hey, verð!"
+msgstr "Ein linja varð skrivað. Hey, heimur!"
 
 #: src/postulo_helloworld/notifier.py
-#, fuzzy
 msgid "A name, not a path: the file is created in the directory this instance gives the plugin. Each notification is appended as one line."
-msgstr "Eitt navn, ikki ein leið: fílan verður stovnað í mappuni, sum henda uppsetingin gevur viðbótini. Hvør fráboðan verður løgd aftrat sum ein linja."
+msgstr "Eitt navn, ikki ein leið: fílan verður stovnað í mappuni, sum henda uppsetingin gevur ískoytinum. Hvør fráboðan verður løgd afturat sum ein linja."
 
 #: src/postulo_helloworld/notifier.py
-#, fuzzy, python-format
+#, python-format
 msgid "Could not write to the file: %(error)s"
 msgstr "Kundi ikki skriva til fíluna: %(error)s"
 
 #: src/postulo_helloworld/notifier.py
-#, fuzzy
 msgid "File name"
 msgstr "Fílunavn"
 
 #: src/postulo_helloworld/notifier.py
-#, fuzzy, python-format
+#, python-format
 msgid "Give the name of a file on its own, not a path: %(name)s is not one."
 msgstr "Gev navnið á eini fílu einsamalt, ikki eina leið: %(name)s er ikki tað."
 
 #: src/postulo_helloworld/notifier.py
-#, fuzzy
 msgid "Greeting"
 msgstr "Heilsan"
 
 #: src/postulo_helloworld/notifier.py
-#, fuzzy
 msgid "Hello world"
 msgstr "Hello world"
 
 #: src/postulo_helloworld/notifier.py
-#, fuzzy
 msgid "Starts every line, so you can tell this plugin's lines apart."
-msgstr "Byrjar hvørja linju, so tú kanst skilja linjurnar hjá hesi viðbótini frá."
+msgstr "Byrjar hvørja linju, so tú kanst skilja linjurnar hjá hesum ískoytinum frá."
 
 #: src/postulo_helloworld/notifier.py
-#, fuzzy
 msgid "This is a test from Postulo."
 msgstr "Hetta er ein roynd frá Postulo."

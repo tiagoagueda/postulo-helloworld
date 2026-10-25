@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: postulo-helloworld\n"
-"PO-Revision-Date: 2026-10-22 21:56+0000\n"
-"Last-Translator: LibreTranslate <noreply-mt-libretranslate@weblate.org>\n"
+"PO-Revision-Date: 2026-10-24 22:02+0000\n"
+"Last-Translator: Tiago Águeda <tiago.agueda@tiagoagueda.com>\n"
 "Language-Team: Turkish <https://translate.tiagoagueda.com/projects/postulo/plugin-helloworld/tr/>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
@@ -15,46 +15,39 @@ msgstr ""
 "X-Generator: postulo scripts/messages.py\n"
 
 #: src/postulo_helloworld/notifier.py
-#, fuzzy
 msgid "A line was written. Hello, world!"
-msgstr "Bir çizgi yazılmıştır. Merhaba, dünya!"
+msgstr "Bir satır yazıldı. Merhaba, dünya!"
 
 #: src/postulo_helloworld/notifier.py
-#, fuzzy
 msgid "A name, not a path: the file is created in the directory this instance gives the plugin. Each notification is appended as one line."
-msgstr "Bir isim, bir yol değil: dosya bu örnekte oluşturulan eklentiye verir. Her bildirim bir çizgi olarak yazılır."
+msgstr "Bir ad, yol değil: dosya bu kurulumun eklentiye ayırdığı dizinde oluşturulur. Her bildirim tek satır olarak eklenir."
 
 #: src/postulo_helloworld/notifier.py
-#, fuzzy, python-format
+#, python-format
 msgid "Could not write to the file: %(error)s"
-msgstr "Dosyaya yazılamaz: %(error)s"
+msgstr "Dosyaya yazılamadı: %(error)s"
 
 #: src/postulo_helloworld/notifier.py
-#, fuzzy
 msgid "File name"
 msgstr "Dosya adı"
 
 #: src/postulo_helloworld/notifier.py
-#, fuzzy, python-format
+#, python-format
 msgid "Give the name of a file on its own, not a path: %(name)s is not one."
-msgstr "Bir dosyanın adını kendi başına verin, bir yol değil: %(name)s bir tane değil."
+msgstr "Yol değil, yalnızca bir dosya adı verin: %(name)s bir dosya adı değil."
 
 #: src/postulo_helloworld/notifier.py
-#, fuzzy
 msgid "Greeting"
-msgstr "Selam"
+msgstr "Selamlama"
 
 #: src/postulo_helloworld/notifier.py
-#, fuzzy
 msgid "Hello world"
 msgstr "Merhaba dünya"
 
 #: src/postulo_helloworld/notifier.py
-#, fuzzy
 msgid "Starts every line, so you can tell this plugin's lines apart."
-msgstr "Her çizgiye başlayın, bu yüzden bu eklentinin çizgilerini ayrı söyleyebilirsiniz."
+msgstr "Her satırın başına gelir, böylece bu eklentinin satırlarını ayırt edebilirsiniz."
 
 #: src/postulo_helloworld/notifier.py
-#, fuzzy
 msgid "This is a test from Postulo."
-msgstr "Bu Postulo'dan bir test."
+msgstr "Bu, Postulo'dan bir test."

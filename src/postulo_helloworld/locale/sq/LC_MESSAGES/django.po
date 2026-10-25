@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: postulo-helloworld\n"
-"PO-Revision-Date: 2026-10-22 21:56+0000\n"
-"Last-Translator: LibreTranslate <noreply-mt-libretranslate@weblate.org>\n"
+"PO-Revision-Date: 2026-10-24 22:02+0000\n"
+"Last-Translator: Tiago Águeda <tiago.agueda@tiagoagueda.com>\n"
 "Language-Team: Albanian <https://translate.tiagoagueda.com/projects/postulo/plugin-helloworld/sq/>\n"
 "Language: sq\n"
 "MIME-Version: 1.0\n"
@@ -15,46 +15,39 @@ msgstr ""
 "X-Generator: postulo scripts/messages.py\n"
 
 #: src/postulo_helloworld/notifier.py
-#, fuzzy
 msgid "A line was written. Hello, world!"
 msgstr "Një rresht u shkrua. Përshëndetje, botë!"
 
 #: src/postulo_helloworld/notifier.py
-#, fuzzy
 msgid "A name, not a path: the file is created in the directory this instance gives the plugin. Each notification is appended as one line."
-msgstr "A emri nuk a shtegu është në është. Çdo njoftim është shtuar si një rresht."
+msgstr "Një emër, jo një shteg: skedari krijohet në dosjen që kjo instancë i jep shtojcës. Çdo njoftim shtohet si një rresht."
 
 #: src/postulo_helloworld/notifier.py
-#, fuzzy, python-format
+#, python-format
 msgid "Could not write to the file: %(error)s"
-msgstr "I pamundur shkrimi tek file: %(error)s"
+msgstr "Nuk mund të shkruhej në skedar: %(error)s"
 
 #: src/postulo_helloworld/notifier.py
-#, fuzzy
 msgid "File name"
-msgstr "Emri i file"
+msgstr "Emri i skedarit"
 
 #: src/postulo_helloworld/notifier.py
-#, fuzzy, python-format
+#, python-format
 msgid "Give the name of a file on its own, not a path: %(name)s is not one."
-msgstr "Thuaj emrin e një file vetë, jo një shteg: %(name)s nuk është një."
+msgstr "Jepni vetëm emrin e një skedari, jo një shteg: %(name)s nuk është i tillë."
 
 #: src/postulo_helloworld/notifier.py
-#, fuzzy
 msgid "Greeting"
 msgstr "Përshëndetje"
 
 #: src/postulo_helloworld/notifier.py
-#, fuzzy
 msgid "Hello world"
 msgstr "Përshëndetje botë"
 
 #: src/postulo_helloworld/notifier.py
-#, fuzzy
 msgid "Starts every line, so you can tell this plugin's lines apart."
-msgstr "Fillon çdo rresht, prandaj mund të dalloni rreshtin e këtij plugin."
+msgstr "Fillon çdo rresht, që të mund t'i dalloni rreshtat e kësaj shtojce."
 
 #: src/postulo_helloworld/notifier.py
-#, fuzzy
 msgid "This is a test from Postulo."
-msgstr "Ky është test nga Populo."
+msgstr "Ky është një test nga Postulo."

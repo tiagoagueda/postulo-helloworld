@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: postulo-helloworld\n"
-"PO-Revision-Date: 2026-10-22 21:56+0000\n"
-"Last-Translator: LibreTranslate <noreply-mt-libretranslate@weblate.org>\n"
+"PO-Revision-Date: 2026-10-25 01:02+0000\n"
+"Last-Translator: Tiago Águeda <tiago.agueda@tiagoagueda.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://translate.tiagoagueda.com/projects/postulo/plugin-helloworld/zh_Hans/>\n"
 "Language: zh_Hans\n"
 "MIME-Version: 1.0\n"
@@ -15,46 +15,39 @@ msgstr ""
 "X-Generator: postulo-messages\n"
 
 #: src/postulo_helloworld/notifier.py
-#, fuzzy
 msgid "A line was written. Hello, world!"
-msgstr "写了一行. 哈罗,世界!"
+msgstr "已写入一行。Hello, world!"
 
 #: src/postulo_helloworld/notifier.py
-#, fuzzy
 msgid "A name, not a path: the file is created in the directory this instance gives the plugin. Each notification is appended as one line."
-msgstr "名称,而不是路径: 文件是在目录中创建的, 此实例给出了插件 。 每份通知作为一行附上."
+msgstr "填写名称，而非路径：文件会创建在此实例分配给该插件的目录中。每条通知追加为一行。"
 
 #: src/postulo_helloworld/notifier.py
-#, fuzzy, python-format
+#, python-format
 msgid "Could not write to the file: %(error)s"
-msgstr "无法写入文件 : %(error)s"
+msgstr "无法写入文件：%(error)s"
 
 #: src/postulo_helloworld/notifier.py
-#, fuzzy
 msgid "File name"
-msgstr "文件名称"
+msgstr "文件名"
 
 #: src/postulo_helloworld/notifier.py
-#, fuzzy, python-format
+#, python-format
 msgid "Give the name of a file on its own, not a path: %(name)s is not one."
-msgstr "自己给一个文件取名,而不是路径:%(name)s不是一."
+msgstr "只填写文件名，不要填写路径：%(name)s不是文件名。"
 
 #: src/postulo_helloworld/notifier.py
-#, fuzzy
 msgid "Greeting"
 msgstr "问候"
 
 #: src/postulo_helloworld/notifier.py
-#, fuzzy
 msgid "Hello world"
-msgstr "哈罗世界"
+msgstr "Hello world"
 
 #: src/postulo_helloworld/notifier.py
-#, fuzzy
 msgid "Starts every line, so you can tell this plugin's lines apart."
-msgstr "启动每行,这样您就可以分辨这个插件的行."
+msgstr "每行的开头，方便你分辨此插件写入的行。"
 
 #: src/postulo_helloworld/notifier.py
-#, fuzzy
 msgid "This is a test from Postulo."
-msgstr "这是波斯图洛的测试."
+msgstr "这是来自 Postulo 的测试。"

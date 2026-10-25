@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: postulo-helloworld\n"
-"PO-Revision-Date: 2026-10-22 21:56+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2026-10-25 04:02+0000\n"
+"Last-Translator: Tiago Águeda <tiago.agueda@tiagoagueda.com>\n"
 "Language-Team: Azerbaijani <https://translate.tiagoagueda.com/projects/postulo/plugin-helloworld/az/>\n"
 "Language: az\n"
 "MIME-Version: 1.0\n"
@@ -16,38 +16,38 @@ msgstr ""
 
 #: src/postulo_helloworld/notifier.py
 msgid "A line was written. Hello, world!"
-msgstr ""
+msgstr "Sətir yazıldı. Salam, dünya!"
 
 #: src/postulo_helloworld/notifier.py
 msgid "A name, not a path: the file is created in the directory this instance gives the plugin. Each notification is appended as one line."
-msgstr ""
+msgstr "Yol deyil, ad: fayl bu instansiyanın plaginə ayırdığı qovluqda yaradılır. Hər bildiriş bir sətir kimi əlavə edilir."
 
 #: src/postulo_helloworld/notifier.py
 #, python-format
 msgid "Could not write to the file: %(error)s"
-msgstr ""
+msgstr "Fayla yazmaq mümkün olmadı: %(error)s"
 
 #: src/postulo_helloworld/notifier.py
 msgid "File name"
-msgstr ""
+msgstr "Fayl adı"
 
 #: src/postulo_helloworld/notifier.py
 #, python-format
 msgid "Give the name of a file on its own, not a path: %(name)s is not one."
-msgstr ""
+msgstr "Yol deyil, yalnız faylın adını verin: %(name)s fayl adı deyil."
 
 #: src/postulo_helloworld/notifier.py
 msgid "Greeting"
-msgstr ""
+msgstr "Salamlama"
 
 #: src/postulo_helloworld/notifier.py
 msgid "Hello world"
-msgstr ""
+msgstr "Salam dünya"
 
 #: src/postulo_helloworld/notifier.py
 msgid "Starts every line, so you can tell this plugin's lines apart."
-msgstr ""
+msgstr "Hər sətrin əvvəlində gəlir ki, bu plaginin sətirlərini ayırd edə biləsiniz."
 
 #: src/postulo_helloworld/notifier.py
 msgid "This is a test from Postulo."
-msgstr ""
+msgstr "Bu, Postulo-dan test mesajıdır."

@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: postulo-helloworld\n"
-"PO-Revision-Date: 2026-10-22 21:56+0000\n"
-"Last-Translator: LibreTranslate <noreply-mt-libretranslate@weblate.org>\n"
+"PO-Revision-Date: 2026-10-30 23:16+0000\n"
+"Last-Translator: Tiago Águeda <tiago.agueda@tiagoagueda.com>\n"
 "Language-Team: Urdu <https://translate.tiagoagueda.com/projects/postulo/plugin-helloworld/ur/>\n"
 "Language: ur\n"
 "MIME-Version: 1.0\n"
@@ -15,46 +15,39 @@ msgstr ""
 "X-Generator: postulo-messages\n"
 
 #: src/postulo_helloworld/notifier.py
-#, fuzzy
 msgid "A line was written. Hello, world!"
 msgstr "ایک لائن لکھی گئی۔ ہیلو، دنیا!"
 
 #: src/postulo_helloworld/notifier.py
-#, fuzzy
 msgid "A name, not a path: the file is created in the directory this instance gives the plugin. Each notification is appended as one line."
-msgstr "ایک نام، کوئی راستہ نہیں: اس کہاوت میں فائل بنایا گیا ہے پلگ ان کو دیتا ہے۔ ہر خبر کو ایک لائن کے طور پر ترتیب دیا جاتا ہے ۔."
+msgstr "ایک نام، پاتھ نہیں: فائل اس ڈائریکٹری میں بنتی ہے جو یہ انسٹینس پلگ ان کو دیتا ہے۔ ہر اطلاع ایک سطر کے طور پر آخر میں شامل کی جاتی ہے۔"
 
 #: src/postulo_helloworld/notifier.py
-#, fuzzy, python-format
+#, python-format
 msgid "Could not write to the file: %(error)s"
-msgstr "فائل نہیں لکھی جاسکتی: %(error)s"
+msgstr "فائل میں نہیں لکھا جا سکا: %(error)s"
 
 #: src/postulo_helloworld/notifier.py
-#, fuzzy
 msgid "File name"
 msgstr "فائل کا نام"
 
 #: src/postulo_helloworld/notifier.py
-#, fuzzy, python-format
+#, python-format
 msgid "Give the name of a file on its own, not a path: %(name)s is not one."
-msgstr "اپنے آپ پر فائل کا نام لکھیں، کسی راہ کا نام نہیں : %(name)s."
+msgstr "صرف فائل کا نام دیں، پاتھ نہیں: %(name)s فائل کا نام نہیں ہے۔"
 
 #: src/postulo_helloworld/notifier.py
-#, fuzzy
 msgid "Greeting"
-msgstr "رنگ"
+msgstr "سلام"
 
 #: src/postulo_helloworld/notifier.py
-#, fuzzy
 msgid "Hello world"
 msgstr "ہیلو دنیا"
 
 #: src/postulo_helloworld/notifier.py
-#, fuzzy
 msgid "Starts every line, so you can tell this plugin's lines apart."
-msgstr "ہر لائن شروع کرتے ہیں، تو آپ اس پلگ ان لائنوں کو الگ بتا سکتے ہیں۔."
+msgstr "ہر سطر کے شروع میں آتا ہے، تاکہ آپ اس پلگ ان کی سطریں الگ پہچان سکیں۔"
 
 #: src/postulo_helloworld/notifier.py
-#, fuzzy
 msgid "This is a test from Postulo."
-msgstr "یہ پوسٹولو کی طرف سے امتحان ہے۔."
+msgstr "یہ Postulo کی طرف سے ایک آزمائش ہے۔"

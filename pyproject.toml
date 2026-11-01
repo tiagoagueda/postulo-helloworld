@@ -1,6 +1,6 @@
 [project]
 name = "postulo-helloworld"
-version = "0.3.1"
+version = "0.5.0"
 description = "The smallest Postulo plugin there is: a capture source and a notifier, translated and tested. Copy it."
 readme = "README.md"
 requires-python = ">=3.12.4"
@@ -45,9 +45,10 @@ artifacts = ["src/postulo_helloworld/locale/*/LC_MESSAGES/django.mo"]
 
 [dependency-groups]
 # Postulo itself, for the tests: they run the plugin inside a real Postulo, through its
-# registry, exactly as an instance would.
+# registry, exactly as an instance would. Pinned to the core's release tag, the Postulo this
+# plugin is released beside; a plugin release moves it (postulo/postulo#1090).
 dev = [
-    "postulo @ git+https://source.tiagoagueda.com/postulo/postulo.git@a8467ab21fac7e16c4a6faf825413e42381656e5",
+    "postulo @ git+https://source.tiagoagueda.com/postulo/postulo.git@v0.5.0",
     "pytest>=8.3",
     "pytest-django>=4.14",
     "ruff>=0.16",

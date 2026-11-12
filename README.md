@@ -19,6 +19,7 @@ its own, tests that run it inside a real Postulo, and a CI workflow.
 | `src/postulo_helloworld/locale/` | **This plugin's own translations**, French and Portuguese. Postulo never translates a plugin's strings; every plugin holds its locale. The directories carry gettext's names (`fr_FR`, `pt_PT`), written by a tool; everywhere else a language is `fr-FR`, as *Make it yours* explains. |
 | `tests/` | Runs both plugins through Postulo's registry, exactly as an instance would, and checks the French comes from this package. `tests/test_surface.py` fails on an import that reaches past `postulo.plugins.api`, by calling the core's own `postulo.plugins.testing` — do that rather than copying this file. `tests/settings.py` is Postulo's test configuration, borrowed. |
 | `pyproject.toml` | The entry points that make the plugins appear, and nothing else: a plugin has no dependencies of its own, it runs inside Postulo's environment. |
+| `.forgejo/ISSUE_TEMPLATE/` | **The issue forms**: *Bug report* and *Feature request*, and the links shown above them. Report a problem with this plugin through them. A plugin's own repository wants its own forms: copy these, change the names, the fields and the links, and keep the link to Postulo's `SECURITY.md` and the warning about personal details. |
 
 ## Try it
 

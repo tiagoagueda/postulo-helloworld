@@ -1,0 +1,81 @@
+# A plugin's own repository wants its own forms. Copying this example? Copy these too, and
+# change the names, the fields that differ for your plugin (the service it talks to, say)
+# and the links in config.yaml. Keep the link to Postulo's SECURITY.md and the warning about
+# personal details: they hold for every plugin.
+name: Bug report
+about: Something in this example plugin does not work, or does not work for you.
+title: "[Bug] "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for taking the time. Write in whatever language you can; English is easiest for the maintainer to act on, but a report in another language is better than none.
+
+        **Is it a security problem?** Do not post it here, this page is public. Follow [SECURITY.md](https://source.tiagoagueda.com/postulo/postulo/src/branch/main/SECURITY.md).
+
+        **Remove personal details before you paste anything.** Postulo holds CVs, home addresses and the names of the people somebody is applying to. A log or a screenshot is where those leak: blank out names, addresses, e-mail addresses, company and listing details, tokens and cookies first.
+
+        Copied this plugin to start your own? Report here what is wrong in the example; a bug in your copy belongs in your own repository.
+  - type: input
+    id: plugin-version
+    attributes:
+      label: postulo-helloworld version
+      description: "*Server settings → Plugins* lists it."
+      placeholder: "0.5.0"
+    validations:
+      required: true
+  - type: input
+    id: postulo-version
+    attributes:
+      label: Postulo version
+      description: The foot of every page shows the version. On the `:dev` image, give the pinned tag (`<version>-dev.<short sha>`), because `:dev` moves.
+      placeholder: "0.5.0"
+    validations:
+      required: true
+  - type: dropdown
+    id: install
+    attributes:
+      label: How the plugin is installed
+      options:
+        - From a catalogue, under Server settings → Plugins
+        - A wheel uploaded under Server settings → Plugins
+        - Into Postulo's environment by hand (uv pip install)
+        - Built into an image of my own
+        - Not installed; I copied it to write my own
+        - Other (say so below)
+    validations:
+      required: true
+  - type: textarea
+    id: purpose
+    attributes:
+      label: What you copied it for
+      description: If the report is about using it as a starting point, what your plugin does and which kind it is (a capture source, a notifier, a store, a sync, or another).
+  - type: textarea
+    id: steps
+    attributes:
+      label: What you did, step by step
+      placeholder: |
+        1. Open ...
+        2. Press ...
+    validations:
+      required: true
+  - type: textarea
+    id: happened
+    attributes:
+      label: What happened
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs
+      description: Anything from the logs that bears on it, with personal details removed first.
+      render: text

@@ -40,10 +40,24 @@ never a path.
 
 ## Make it yours
 
-1. Copy the repository and rename `postulo_helloworld` to your package.
+1. Copy the repository and rename it everywhere the name lives, or the copy will not
+   import. The package is `postulo_helloworld`, the distribution `postulo-helloworld`
+   (`postulo-messages` finds the package from the distribution's name, hyphens read as
+   underscores), and between them they are written in:
+   - the directory `src/postulo_helloworld/`;
+   - `pyproject.toml`: `[project] name`, `[tool.hatch.build.targets.wheel] packages` and
+     `artifacts`, and the entry points (step 3);
+   - `src/postulo_helloworld/__init__.py`: the distribution's name in `version(...)`, which
+     raises `PackageNotFoundError` on import once nothing of that name is installed;
+   - `tests/test_surface.py`: `PACKAGE`.
+
+   `tests/test_helloworld.py` fails while `__init__.py` and `[project] name` disagree.
 2. Keep or delete either plugin; a package may hold one kind or several.
 3. Change the entry points in `pyproject.toml` to point at your classes. The groups are
-   `postulo.sources`, `postulo.notifiers`, `postulo.stores` and `postulo.syncs`. A plugin's
+   `postulo.sources`, `postulo.importers`, `postulo.notifiers`, `postulo.outboxes`,
+   `postulo.stores`, `postulo.syncs`, `postulo.transports`, `postulo.features`,
+   `postulo.link_services`, `postulo.messaging_services`, `postulo.register_adapters` and
+   `postulo.backups`, and the class each expects is on `postulo.plugins.api`. A plugin's
    `name` is unique across every kind on an instance -- its switch, its form and its logo are
    keyed by it, and Postulo leaves out a second plugin of the same name -- which is why the
    source here is `helloworld` and the notifier `helloworld-notifier`.
@@ -83,8 +97,9 @@ never a path.
 
 The contract in full — every field of `JobPostingData`, how sources are chosen, what a
 connected plugin's `config_fields()` and `test()` must do, how to add a settings section —
-is in Postulo's
-[docs/PLUGINS.md](https://source.tiagoagueda.com/postulo/postulo/src/branch/main/docs/PLUGINS.md).
+is in the wiki's
+[Writing a plugin](https://source.tiagoagueda.com/postulo/postulo/wiki/Writing-a-plugin);
+the names you may use are the ones in `postulo.plugins.api.__all__`.
 
 ## Rules worth keeping
 
@@ -101,7 +116,7 @@ is in Postulo's
   page ahead of Postulo's own parsers.
 - **Import `postulo.plugins.api` and nothing else from Postulo.** Everything else is
   internals that may be renamed in a patch release; `tests/test_surface.py` holds you to it.
-- **Use `postulo.plugins.http.client()` for every request** a connected plugin makes. It
+- **Use `postulo.plugins.api.client()` for every request** a connected plugin makes. It
   carries Postulo's timeouts, user agent and destination policy.
 - **Raise on failure in `send()`.** Postulo logs it and shows it on the connection; it
   never fails whatever caused the notification.

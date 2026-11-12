@@ -57,3 +57,26 @@ def test_the_surface_promises_what_this_plugin_asks_of_it(name: str):
     from postulo.plugins import api
 
     assert name in api.__all__, f"{SURFACE} does not promise {name}"
+
+
+def test_the_readme_names_nothing_past_the_surface_to_import_or_call():
+    """#10: the README told authors to call ``postulo.plugins.http.client()``, which the
+    check above refuses. Every Postulo module it names has to be the surface or the test
+    helpers; a dotted name that is no module at all (an entry-point group) is not one."""
+    import importlib.util
+    import re
+
+    readme = (Path(__file__).resolve().parents[1] / "README.md").read_text(encoding="utf-8")
+    past = set()
+    for name in set(re.findall(r"\bpostulo(?:\.\w+)+", readme)):
+        parts = name.split(".")
+        modules = []
+        for end in range(2, len(parts) + 1):
+            try:
+                if importlib.util.find_spec(".".join(parts[:end])) is not None:
+                    modules.append(".".join(parts[:end]))
+            except ModuleNotFoundError:
+                break
+        if modules and modules[-1] not in (SURFACE, "postulo.plugins.testing"):
+            past.add(name)
+    assert not past, f"the README names modules past the plugin surface: {sorted(past)}"

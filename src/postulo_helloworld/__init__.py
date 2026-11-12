@@ -23,5 +23,9 @@ from importlib.metadata import version
 #: Read from the installed distribution, so ``pyproject.toml`` is the only place a version
 #: is written. It is recorded against every capture this source made and every connection
 #: the notifier holds, and two numbers that can disagree eventually do. Installing the
-#: package is how a plugin becomes loadable at all, so the metadata is always there.
+#: package is how a plugin becomes loadable at all, so the metadata is there -- under the
+#: name written here, which has to be ``[project] name`` in ``pyproject.toml``: rename one
+#: and not the other and the import fails (``tests/test_helloworld.py`` holds the two
+#: together). ``packages_distributions()`` cannot find it for you, because an editable
+#: install, which is what ``uv sync`` makes, records no package for the distribution.
 __version__ = version("postulo-helloworld")

@@ -22,7 +22,7 @@ dependencies = []
 [project.urls]
 Homepage = "https://source.tiagoagueda.com/postulo/postulo-helloworld"
 "Postulo" = "https://source.tiagoagueda.com/postulo/postulo"
-"Writing a plugin" = "https://source.tiagoagueda.com/postulo/postulo/src/branch/main/docs/PLUGINS.md"
+"Writing a plugin" = "https://source.tiagoagueda.com/postulo/postulo/wiki/Writing-a-plugin"
 
 # This is the whole installation: an entry point per plugin. Postulo reads these groups
 # when it starts and the plugins appear, with no change to Postulo.

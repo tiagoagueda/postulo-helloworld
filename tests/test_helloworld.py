@@ -253,3 +253,24 @@ def test_the_plugin_speaks_french_and_portuguese_by_itself():
             assert notifier.config_fields()[0].label == (field or "File name")
     with translation.override("en-GB"):
         assert str(notifier.label) == "Hello world"
+
+
+def test_the_version_is_read_under_the_name_pyproject_gives_the_distribution():
+    """#10: a copy renamed in ``pyproject.toml`` and not in ``__init__.py`` fails on import,
+    and one renamed the other way reports whichever plugin of the old name is installed."""
+    import ast
+    import tomllib
+    from pathlib import Path
+
+    root = Path(__file__).resolve().parents[1]
+    project = tomllib.loads((root / "pyproject.toml").read_text(encoding="utf-8"))["project"]
+    init = root / "src" / "postulo_helloworld" / "__init__.py"
+    names = [
+        node.args[0].value
+        for node in ast.walk(ast.parse(init.read_text(encoding="utf-8")))
+        if isinstance(node, ast.Call)
+        and getattr(node.func, "id", "") == "version"
+        and node.args
+        and isinstance(node.args[0], ast.Constant)
+    ]
+    assert names == [project["name"]]

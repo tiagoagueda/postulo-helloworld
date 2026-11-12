@@ -20,6 +20,7 @@ its own, tests that run it inside a real Postulo, and a CI workflow.
 | `tests/` | Runs both plugins through Postulo's registry, exactly as an instance would, and checks the French comes from this package. `tests/test_surface.py` fails on an import that reaches past `postulo.plugins.api`, by calling the core's own `postulo.plugins.testing` — do that rather than copying this file. `tests/settings.py` is Postulo's test configuration, borrowed. |
 | `pyproject.toml` | The entry points that make the plugins appear, and nothing else: a plugin has no dependencies of its own, it runs inside Postulo's environment. |
 | `.forgejo/ISSUE_TEMPLATE/` | **The issue forms**: *Bug report* and *Feature request*, and the links shown above them. Report a problem with this plugin through them. A plugin's own repository wants its own forms: copy these, change the names, the fields and the links, and keep the link to Postulo's `SECURITY.md` and the warning about personal details. |
+| `.forgejo/workflows/` | **The CI**: `ci.yml` (lint, catalogues, tests, and the dependency audit as its own job), `weekly.yml` (the audit alone, every Monday) and `release.yml` (the release gate, on a tag). Each step is a call to the shared plugin action, [Postulo/plugin-ci](https://source.tiagoagueda.com/Postulo/plugin-ci), by its full address, so a new plugin copies these three files as they are and a change to the plugin CI (a uv bump) is made there once. Its README lists the inputs, such as extra Debian packages. |
 
 ## Try it
 

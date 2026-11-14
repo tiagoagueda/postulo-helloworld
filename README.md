@@ -131,3 +131,7 @@ the names you may use are the ones in `postulo.plugins.api.__all__`.
 
 MIT, so that copying it into your own plugin is a decision you never have to think about.
 Postulo itself is AGPL-3.0-or-later.
+
+The copyright line in `LICENSE` and the `authors` entry in `pyproject.toml` name the Postulo
+contributors because this repository is theirs. When you start your own plugin from it,
+replace both with your own name (or your organisation's).
